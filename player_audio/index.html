@@ -1,21 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style.css">
+    <link href="https://fonts.cdnfonts.com/css/courgette" rel="stylesheet" />
+    <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet" />
+    <link href="https://fonts.cdnfonts.com/css/montserrat" rel="stylesheet" />
     <title>My Audio Player</title>
 </head>
+
 <body>
     <main>
-
-        <audio id="myAudio" src="sample.mp3"></audio>
+        <div class="container_1">
+            <input type="button" class="btn_fermer" value="X">
+            <div class="container_2">
+                <div class="cont_my_playlist">
+                    <p>My playlist</p>
+                    <div class="container_title">
+                        <div class="con_img_title">
+                            <img src="./assets/img/Capture1.PNG" alt="" class="img_title">
+                            <img src="./assets/img/Capture2.PNG" alt="" class="img_title">
+                            <img src="./assets/img/Capture3.PNG" alt="" class="img_title">
+                            <img src="./assets/img/Capture4.PNG" alt="" class="img_title">
+                            <img src="./assets/img/Capture5.PNG" alt="" class="img_title">
+                        </div>
+                        <div class="con_bouton_title">
+                            <img src="./assets/img/play-circle.png" alt="" class="bouton_title">
+                            <img src="./assets/img/play-circle.png" alt="" class="bouton_title">
+                            <img src="./assets/img/play-circle.png" alt="" class="bouton_title">
+                            <img src="./assets/img/play-circle.png" alt="" class="bouton_title">
+                            <img src="./assets/img/play-circle.png" alt="" class="bouton_title">
+                        </div>
+                    </div>
+                </div>
+                <div class="cont_my_album">
+                    <p>Latest Album</p>
+                    <div class="container_album">
+                        <img src="./assets/img/Stromae.jpg" alt="le chanteur Stromae" class="img_stromae">
+                    <p class="multitude">Stromae _ Multitude</p>
+                    </div>
+                </div>
+            </div>
+            <div class="time_avance">
+                <div class="time">
+                    <p>0:0</p>
+                    <p>3:45</p>
+                </div>
+                <div class="point_avance"></div>
+                <div class="barre_avance"></div>
+            </div>
+            <div class="son_stop">
+                <div class="con_boutons"></div>
+                <div class="con_son">
+                </div>
+            </div>
+        </div>
+        <!-- <audio id="myAudio" src="sample.mp3"></audio>
         <button onclick="playAudio()" type="button">Play Audio</button>
-        <button onclick="pauseAudio()" type="button">Pause Audio</button>
-        
+        <button onclick="pauseAudio()" type="button">Pause Audio</button> -->
+
         <!--L’insertion d’un fichier audio se réalise très simplement par la balise :-->
         <!-- <audio src=”fichier_son”></audio> -->
+
+
     </main>
 </body>
 <script src="main.js"></script>
+
 </html>
