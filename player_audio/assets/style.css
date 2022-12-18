@@ -190,6 +190,8 @@ p {
     height: 452px;
     background-color: var(--primary-color);
     border-radius: 15px;
+    box-shadow: 10px 10px 5px 5px rgba(0, 0, 0, 0.25);
+
 }
 
 .btn_fermer {
@@ -208,6 +210,7 @@ p {
     width: 690px;
     height: 301px;
     margin-left: 15px;
+    margin-bottom: 0px;
     margin-top: 5px;
     background-color: var(--primary-dark);
     border-radius: 15px;
@@ -237,7 +240,7 @@ p {
     font-size: 1.5em;
 }
 
-.con_img_title{
+.con_img_title {
     width: 37px;
     height: 243px;
     margin-left: 23px;
@@ -247,7 +250,8 @@ p {
     padding: 10px 0px;
 
 }
-.con_bouton_title{
+
+.con_bouton_title {
     width: 24px;
     height: 243px;
     display: flex;
@@ -256,15 +260,18 @@ p {
     padding: 16px 0px;
     margin-left: 20px;
 }
-.bouton_title{
+
+.bouton_title {
     width: 24px;
     height: 24px;
 }
-.img_title{
+
+.img_title {
     width: 37px;
     height: 37px;
     border-radius: 5px;
 }
+
 .container_album {
     width: 224px;
     height: 243px;
@@ -273,8 +280,43 @@ p {
 
 }
 
-.time {
-    margin-bottom: 0px;
+.container_album p {
+    font-size: 1em;
+    margin-top: 10px;
+    font-family: inter, Arial, Helvetica, sans-serif;
+
+}
+
+.cadre_stromae {
+    width: 183px;
+    height: 133px;
+    border-radius: 5px;
+    margin-top: 10px;
+    background-image: url(../assets/img/Stromae.jpg);
+    background-color: orange;
+    background-size: cover;
+    margin-top: 10px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.btn_vert_Stromae {
+    width: 34px;
+    height: 34px;
+}
+
+.btn_vert_Stromae_playe {
+    width: 50px;
+    height: 50px;
+}
+
+.chariot {
+    width: 40px;
+    height: 32.32;
+    margin-top: 28px;
 }
 
 .time_avance {
@@ -284,64 +326,119 @@ p {
 }
 
 .time {
-    margin: 0px 15px 5px 0px;
+    margin: 0px 15px 2px 0px;
     display: flex;
     justify-content: space-between;
 }
 
-.point_avance{
+.time p {
+    font-size: 0.8em;
+}
+
+.barre_point {
+    position: relative;
+    width: 690px;
+    height: 13px;
+    display: flex;
+    margin-left: 15px;
+}
+
+.point_avance {
+    position: relative;
     width: 13px;
     height: 13px;
     border-radius: 50%;
     background-color: var(--vert);
-    margin-bottom: -9px;
     z-index: 10;
 }
+
 .barre_avance {
+    position: absolute;
     width: 690px;
     height: 5px;
     border-radius: 3px;
     background-color: var(--white);
-
+    margin-top: 4px;
 
 }
 
+.footer {
+    width: 690px;
+    height: 30px;
+    display: flex;
+    justify-content: space-evenly;
+}
 .con_boutons {
     width: 284px;
     height: 45px;
     border-radius: 5px;
     background-color: var(--primary-light);
-    /* margin-left: 219px; */
-    margin-top: 17px;
-}
-
-.son_stop {
+    margin-top: 15px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-right: 5px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.25);
 }
 
-.con_son {
+.btn_reset,
+.btn_recedente,
+.btn_suivante,
+.btn_aléatoire {
+    width: 30px;
+    height: 30px;
+}
+
+.btn_recule,
+.btn_avance {
+    width: 35px;
+    height: 35px;
+}
+
+.btn_play {
+    width: 40px;
+    height: 40px;
+}
+
+
+.son_stop{
+    width: 170px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+.barre_sound{
+    position: relative;
+    display: flex;
+
+}
+.barre_son {
+    position: relative;
     width: 97.73px;
     height: 3px;
     border-radius: 3px;
     background-color: var(--white);
     margin-left: 15px;
     margin-top: 24px;
+    display: flex;
 }
 
-.img_stromae {
-    width: 183px;
-    height: 133px;
-    border-radius: 5px;
-    margin-top: 10px;
+.sound_off {
+    width: 34px;
+    height: 34px;
 }
 
-.multitude {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 0.2em;
-    width: 224px;
-    height: 20px;
+.point_son {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--orange);
+}
 
+.reset_playe_audio {
+    width: 44px;
+    height: 44px;
 }
 
 /****************** Début_Calculatrice**********************************************************/
