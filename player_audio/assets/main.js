@@ -1,4 +1,3 @@
-// Même si la balise <audio> est déjà largement implantée, il n’est pas inutile de prévoir 
 // un message pour les anciens navigateurs qui ne prennent pas en charge cette balise.
 // <audio src=”fichier_son”>Votre navigateur ne supporte pas la balise audio</audio>
 
@@ -33,11 +32,23 @@
 // Cet attribut preload est ignoré si l’attribut autoplay est présent.
 
 
+// let play = document.querySelector(".btn_play");
+let playStatus = false;
+let audio = new Audio("./assets/img/Vianney-Kendji-Girac-Le-feu.mp3");
+let play_stop = document.querySelector("#play_stop");
+play_stop.addEventListener("click", (e) => {
+    playStop();
+});
 
-let myAudio = document.getElementById("myAudio");
-function playAudio() { 
-    myAudio.play(); 
-} 
-function pauseAudio() { 
-    myAudio.pause(); 
-} 
+function playStop(){
+        if (playStatus ===false) {
+        play_stop.className="pause"
+        audio.play();
+        playStatus = true;
+
+    } else {
+        play_stop.className="play"
+        audio.pause();
+        playStatus = false;
+    }
+};
