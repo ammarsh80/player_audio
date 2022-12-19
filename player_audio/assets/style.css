@@ -272,6 +272,29 @@ p {
     border-radius: 5px;
 }
 
+.con_titles_en_lecture p {
+    width: 250px;
+    height: 20px;
+    font-size: 1em;
+    color: var(--white);
+margin-bottom: 27px;
+}
+
+.C_con_titles_en_lecture {
+    width: 270px;
+    height: 243px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: 21px;
+    padding: 19px 0px;
+    margin-left: 10px;
+}
+.con_titles_en_lecture {
+    margin-left: 10px;
+    padding-top: 20px;
+    display: none;
+}
 .container_album {
     width: 224px;
     height: 243px;
@@ -370,6 +393,25 @@ p {
     justify-content: flex-end;
     margin-left: 15px;
 }
+
+.titre_en_lecture {
+    width: 180px;
+    height: 45px;
+    display: flex;
+    display: none;
+}
+
+.titre_en_lecture p {
+    margin-left: 10px;
+    font-size: 0.8em;
+    color: var(--white);
+}
+
+.img_en_lecture {
+    width: 37px;
+    height: 37px;
+}
+
 .con_boutons {
     width: 284px;
     height: 45px;
@@ -403,7 +445,7 @@ p {
 }
 
 
-.son_stop{
+.son_stop {
     position: relative;
     width: 200px;
     height: 45px;
@@ -412,12 +454,14 @@ p {
     align-items: center;
     margin-left: 3px;
 }
-.barre_sound{
+
+.barre_sound {
     width: 97.73px;
     height: 10px;
     position: relative;
 
 }
+
 .barre_son {
     position: relative;
     width: 97.73px;

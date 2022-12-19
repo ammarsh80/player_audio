@@ -40,15 +40,67 @@ play_stop.addEventListener("click", (e) => {
     playStop();
 });
 
-function playStop(){
-        if (playStatus ===false) {
-        play_stop.className="pause"
+function playStop() {
+    if (playStatus === false) {
+        play_stop.className = "pause"
         audio.play();
         playStatus = true;
 
     } else {
-        play_stop.className="play"
+        play_stop.className = "play"
         audio.pause();
         playStatus = false;
     }
 };
+
+// let playlist = document.querySelector("#library-link");
+// playlist.addEventListener("click", (e)=>{
+//     recharge();
+
+// })
+
+// let list = false
+// function recharge(){
+//     if (list===false){
+//        let mylist= document.querySelector(".con_titles_en_lecture");
+//        mylist.style.display = "block";
+//     }
+// }
+
+// function color_div(selecteur, color) {
+//     document.querySelector(selecteur).classList.toggle(color);
+// };
+
+// let rouge = document.querySelector(".rouge");
+// rouge.addEventListener("click", (e) => {
+//     color_div(".div1", "C_div1_rouge");
+// }
+// );
+
+function list_recharge(selecteur, styl) {
+    document.querySelector(selecteur).classList.toggle(styl);
+};
+
+let recharg = document.querySelector("#library-link");
+recharg.addEventListener("click", (e) => {
+    let mylist = document.querySelector(".con_titles_en_lecture");
+    mylist.style.display = "block";
+    
+    list_recharge(".con_titles_en_lecture", "C_con_titles_en_lecture");
+}
+);
+
+
+// const libraryLink = document.getElementById("library-link");
+// libraryLink.addEventListener("click", openLibrary);
+// const library = document.querySelector(".library");
+
+// function openLibrary() {
+//     if (library.classList.contains("library-opened")) {
+//       library.classList.remove("library-opened");
+//       libraryLink.classList.remove("library-opened-link");
+//     } else {
+//       library.classList.add("library-opened");
+//       libraryLink.classList.add("library-opened-link");
+//     }
+//   }
