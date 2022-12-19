@@ -277,7 +277,13 @@ p {
     height: 20px;
     font-size: 1em;
     color: var(--white);
-margin-bottom: 27px;
+    margin-bottom: 27px;
+}
+
+.con_titles_en_lecture {
+    margin-left: 10px;
+    padding-top: 20px;
+    display: none;
 }
 
 .C_con_titles_en_lecture {
@@ -289,12 +295,10 @@ margin-bottom: 27px;
     gap: 21px;
     padding: 19px 0px;
     margin-left: 10px;
+    display: block;
 }
-.con_titles_en_lecture {
-    margin-left: 10px;
-    padding-top: 20px;
-    display: none;
-}
+
+
 .container_album {
     width: 224px;
     height: 243px;
@@ -486,6 +490,52 @@ margin-bottom: 27px;
     z-index: 10;
     margin-bottom: 0px;
 }
+
+.sound-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.sound-control input {
+    width: 97.73px;
+    height: 3px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 3px;
+    outline: none;
+}
+
+/* la zone de déplacement */
+input[type=range].custom-slider::-moz-range-track {
+    height: 3px;
+    border: none;
+    border-radius: 0;
+    background-color: var(--white);
+    /*supprime barre progression avant*/
+}
+
+/* le curseur */
+input[type=range].custom-slider::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    border: none;
+    /* s'adapte à la hauteur de l'input */
+    border-radius: 50%;
+    /* supprimer le rayon */
+    background: var(--orange);
+}
+
+/* barre progression avant */
+input[type=range].custom-slider::-moz-range-progress {
+    height: 3px;
+    background: var(--vert);
+    /* supprime barre progression avant */
+}
+
+
 
 .reset_playe_audio {
     width: 44px;

@@ -53,44 +53,29 @@ function playStop() {
     }
 };
 
-// let playlist = document.querySelector("#library-link");
-// playlist.addEventListener("click", (e)=>{
-//     recharge();
-
-// })
-
-// let list = false
-// function recharge(){
-//     if (list===false){
-//        let mylist= document.querySelector(".con_titles_en_lecture");
-//        mylist.style.display = "block";
-//     }
-// }
-
-// function color_div(selecteur, color) {
-//     document.querySelector(selecteur).classList.toggle(color);
-// };
-
-// let rouge = document.querySelector(".rouge");
-// rouge.addEventListener("click", (e) => {
-//     color_div(".div1", "C_div1_rouge");
-// }
-// );
-
 function list_recharge(selecteur, styl) {
     document.querySelector(selecteur).classList.toggle(styl);
 };
 
 let recharg = document.querySelector("#library-link");
 recharg.addEventListener("click", (e) => {
-    let mylist = document.querySelector(".con_titles_en_lecture");
-    mylist.style.display = "block";
-    
     list_recharge(".con_titles_en_lecture", "C_con_titles_en_lecture");
 }
 );
 
 
+
+//* sound volume control
+const volume = document.querySelector(".sound-control input");
+volume.addEventListener("change", () => {
+  audio.volume = volume.value / 100;
+});
+
+//*defining audio and song info
+//format current/duration time
+function timeFormat(time) {
+  return Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2);
+}
 // const libraryLink = document.getElementById("library-link");
 // libraryLink.addEventListener("click", openLibrary);
 // const library = document.querySelector(".library");
