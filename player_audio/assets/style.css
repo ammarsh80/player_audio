@@ -362,37 +362,14 @@ p {
 
 .time p {
     font-size: 0.8em;
+    margin-bottom: -3px;
 }
 
-.barre_point {
-    position: relative;
+.player input {
     width: 690px;
-    height: 13px;
-    display: flex;
+    height: 5px;
     margin-left: 15px;
-}
-
-.point_avance {
-    position: relative;
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-    background-color: var(--vert);
-    z-index: 10;
-}
-
-.barre_avance {
-    position: absolute;
-    width: 690px;
-    height: 5px;
-    border-radius: 3px;
-    background-color: var(--white);
-    margin-top: 4px;
-
-}
-.barre_point input {
-    width: 690px;
-    height: 5px;
+    margin-top: 0px;
     cursor: pointer;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -442,7 +419,7 @@ input[type=range].custom-slider-avance::-moz-range-progress {
     width: 180px;
     height: 45px;
     display: flex;
-    display: none;
+    /* display: none; */
 }
 
 .titre_en_lecture p {
