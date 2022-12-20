@@ -57,6 +57,18 @@ function list_recharge(selecteur, styl) {
     document.querySelector(selecteur).classList.toggle(styl);
 };
 
+function sound_charge(selecteur, sty) {
+    document.querySelector(selecteur).classList.add(sty);
+};
+
+
+function sound_remove(selecteur, sty) {
+    document.querySelector(selecteur).classList.remove(sty);
+};
+
+
+sound_charge(".sound_off","C_sound_show");
+
 let recharg = document.querySelector("#library-link");
 recharg.addEventListener("click", (e) => {
     list_recharge(".con_titles_en_lecture", "C_con_titles_en_lecture");
@@ -65,17 +77,50 @@ recharg.addEventListener("click", (e) => {
 
 
 
+
+
+// console.log(volumeValue);
+function soundIcon(){
+    const soundValue = document.querySelector(".sound-control input").value;
+    if (soundValue==0){
+        sound_charge(".sound_off","C_sound_show");
+        sound_remove(".sound_low","C_sound_show");
+        sound_remove(".sound_hight","C_sound_show");
+        sound_remove(".sound_off","C_sound_hidden_sound_off");
+    }
+    else if((soundValue >0) & (soundValue <=50)){
+        sound_charge(".sound_off","C_sound_hidden_sound_off");
+        sound_remove(".sound_off","C_sound_show");
+        sound_charge(".sound_low","C_sound_show");
+        sound_remove(".sound_hight","C_sound_show");
+
+    }
+    else if(soundValue >50){
+        sound_remove(".sound_off","C_sound_show");
+        sound_remove(".sound_low","C_sound_show");
+        sound_charge(".sound_hight","C_sound_show");
+    }
+}
+
 //* sound volume control
 const volume = document.querySelector(".sound-control input");
 volume.addEventListener("change", () => {
-  audio.volume = volume.value / 100;
+    let volumeValue = document.querySelector(".sound-control input").value;
+console.log(volumeValue);
+    audio.volume = volume.value / 100;
+    soundIcon();
 });
-
 //*defining audio and song info
 //format current/duration time
 function timeFormat(time) {
   return Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2);
 }
+
+
+const durationInput = document.querySelector(".player input");
+const currentTime = document.querySelector(".player span");
+
+
 // const libraryLink = document.getElementById("library-link");
 // libraryLink.addEventListener("click", openLibrary);
 // const library = document.querySelector(".library");

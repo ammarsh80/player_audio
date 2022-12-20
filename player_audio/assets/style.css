@@ -296,6 +296,8 @@ p {
     padding: 19px 0px;
     margin-left: 10px;
     display: block;
+    font-family: inter, Arial, Helvetica, sans-serif;
+
 }
 
 
@@ -388,7 +390,45 @@ p {
     margin-top: 4px;
 
 }
+.barre_point input {
+    width: 690px;
+    height: 5px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 3px;
+    outline: none;
+}
+/* la zone de déplacement */
+input[type=range].custom-slider-avance::-moz-range-track {
+    height: 5px;
+    border: none;
+    border-radius: 3px;
+    background-color: var(--white);
+    /*supprime barre progression avant*/
+}
 
+/* le curseur */
+input[type=range].custom-slider-avance::-moz-range-thumb {
+
+    width: 13px;
+    height: 13px;
+    border: none;
+    /* s'adapte à la hauteur de l'input */
+    border-radius: 50%;
+    /* supprimer le rayon */
+    background: var(--vert);
+}
+
+/* barre progression avant */
+input[type=range].custom-slider-avance::-moz-range-progress {
+    height: 5px;
+    border-radius: 3px;
+
+    background: var(--vert);
+    /* supprime barre progression avant */
+}
 .footer {
     width: 690px;
     height: 45px;
@@ -459,6 +499,22 @@ p {
     margin-left: 3px;
 }
 
+.sound_low,
+.sound_hight {
+    position: absolute;
+    display: none;
+}
+
+.C_sound_show {
+    display: block;
+    position: relative;
+}
+
+.C_sound_hidden_sound_off {
+    display: none;
+    position: absolute;
+}
+
 .barre_sound {
     width: 97.73px;
     height: 10px;
@@ -479,6 +535,7 @@ p {
     position: relative;
     width: 34px;
     height: 34px;
+    /* z-index: -1; */
 }
 
 .point_son {
@@ -509,7 +566,7 @@ p {
 }
 
 /* la zone de déplacement */
-input[type=range].custom-slider::-moz-range-track {
+input[type=range].custom-slider-son::-moz-range-track {
     height: 3px;
     border: none;
     border-radius: 0;
@@ -518,7 +575,7 @@ input[type=range].custom-slider::-moz-range-track {
 }
 
 /* le curseur */
-input[type=range].custom-slider::-moz-range-thumb {
+input[type=range].custom-slider-son::-moz-range-thumb {
     width: 10px;
     height: 10px;
     border: none;
@@ -529,9 +586,9 @@ input[type=range].custom-slider::-moz-range-thumb {
 }
 
 /* barre progression avant */
-input[type=range].custom-slider::-moz-range-progress {
+input[type=range].custom-slider-son::-moz-range-progress {
     height: 3px;
-    background: var(--vert);
+    background: var(--orange);
     /* supprime barre progression avant */
 }
 
