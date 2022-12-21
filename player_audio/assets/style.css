@@ -426,7 +426,7 @@ input[type=range].custom-slider-avance::-moz-range-progress {
     width: 180px;
     height: 45px;
     display: flex;
-    /* display: none; */
+    display: none;
 }
 
 .titre_en_lecture p {

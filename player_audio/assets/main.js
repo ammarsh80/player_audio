@@ -541,7 +541,6 @@ let countMyliste = 0;
  * @param {*} styl classe de style voulu 
  */
 function list_recharge(selecteur, styl) {
-  countMyliste++;
   document.querySelector(selecteur).classList.toggle(styl);
 };
 /**
@@ -580,8 +579,17 @@ function sound_remove(selecteur, sty) {
 let recharg = document.querySelector("#library-link");
 recharg.addEventListener("click", (e) => {
   list_recharge(".con_titles_en_lecture", "C_con_titles_en_lecture");
+
+
 }
 );
+
+
+// function rechargplaylist () {
+//   console.log(countMyliste);
+//   list_recharge(".con_titles_en_lecture", "C_con_titles_en_lecture");
+
+// }
 
 //* sound control
 //* sound =0 onload
@@ -620,57 +628,38 @@ function soundIcon() {
 
 }
 
-// function soundIcon() {
-//   const soundValue = document.querySelector(".sound-control input").value;
-//   if (soundValue) {
-//       sound_charge(".sound_off", "C_sound_show");
-//       sound_remove(".sound_low", "C_sound_show");
-//       sound_remove(".sound_hight", "C_sound_show");
-//       sound_remove(".sound_off", "C_sound_hidden_sound_off");
-//   }
-// else if ((soundValue > 0) & (soundValue <= 50)) {
-//     sound_charge(".sound_off", "C_sound_hidden_sound_off");
-//     sound_remove(".sound_off", "C_sound_show");
-//     sound_charge(".sound_low", "C_sound_show");
-//     sound_remove(".sound_hight", "C_sound_show");
 
-// }
-// else if (soundValue > 50) {
-//     sound_remove(".sound_off", "C_sound_show");
-//     sound_remove(".sound_low", "C_sound_show");
-//     sound_charge(".sound_hight", "C_sound_show");
-//     return soundValue;
-// }
+/**
+ * 
+ * @param {*} time formater le time (current/duration)  
+ * @returns (m:ss)
+ */
+function timeFormat(time) {
+    return Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2);
+}
 
-// /**
-//  * 
-//  * @param {*} time formater le time (current/duration)  
-//  * @returns (m:ss)
-//  */
-// function timeFormat(time) {
-//     return Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2);
-// }
+const durationInput = document.querySelector(".player input");
+const currentTime = document.querySelector(".time_avance p");
 
-// const durationInput = document.querySelector(".player input");
-// const currentTime = document.querySelector(".time_avance p");
+const currentAudi = document.getElementById("myAudio");
 
-// audio.addEventListener("loadedmetadata", () => {
-//     const endTime = document.querySelector(".time_avance p:last-child");
-//     durationInput.value = audio.currentTime;
-//     durationInput.setAttribute("max", audio.duration);
-//     currentTime.innerText = `${timeFormat(audio.currentTime)}`;
-//     endTime.innerText = `${timeFormat(audio.duration)}`;
-// });
+currentAudi.addEventListener("loadedmetadata", () => {
+    const endTime = document.querySelector(".time_avance p:last-child");
+    durationInput.value = currentAudi.currentTime;
+    durationInput.setAttribute("max", currentAudi.duration);
+    currentTime.innerText = `${timeFormat(currentAudi.currentTime)}`;
+    endTime.innerText = `${timeFormat(currentAudi.duration)}`;
+});
 
-// audio.addEventListener("timeupdate", () => {
-//     durationInput.value = audio.currentTime;
-//     currentTime.innerText = `${timeFormat(audio.currentTime)}`;
-//     document.querySelector(".time_avance p:last-child").style.left = `${(audio.currentTime / audio.duration) * 100}%`;
-// });
+currentAudi.addEventListener("timeupdate", () => {
+    durationInput.value = currentAudi.currentTime;
+    currentTime.innerText = `${timeFormat(currentAudi.currentTime)}`;
+    document.querySelector(".time_avance p:last-child").style.left = `${(currentAudi.currentTime / currentAudi.duration) * 100}%`;
+});
 
-// durationInput.addEventListener("change", () => {
-//     audio.currentTime = durationInput.value;
-// });
+durationInput.addEventListener("change", () => {
+  currentAudi.currentTime = durationInput.value;
+});
 
 
 
@@ -722,6 +711,8 @@ function createTrackItem(index, name, duration) {
   trackDurationItem.setAttribute("class", "playlist-duration");
   trackDurationItem.innerHTML = duration
   document.querySelector("#ptc-" + index).appendChild(trackDurationItem);
+  document.querySelector(".custom-slider-son").value = 25;
+
 }
 
 
@@ -772,22 +763,47 @@ let listAudio = [
 
 for (var i = 0; i < listAudio.length; i++) {
   createTrackItem(i, listAudio[i].name, listAudio[i].duration);
+
 }
 var indexAudio = 0;
 
-function loadNewTrack(index) {
-  var player = document.querySelector('#source-audio')
-  player.src = listAudio[index].file
-  document.querySelector('.title').innerHTML = listAudio[index].name
-  this.currentAudio = document.getElementById("myAudio");
-  this.currentAudio.load()
-  this.toggleAudio()
-  this.updateStylePlaylist(this.indexAudio, index)
-  this.indexAudio = index;
-  let myindex = indexAudio;
-  console.log(myindex);
-}
 
+// * démarrer/arrêter la musique
+// */
+// function playStop() {
+//     if ((playStatus === false) & (countMyliste % 2 == 1)) {
+//         document.querySelector(".custom-slider-son").value = 25;
+//         play_stop.className = "pause"
+//         audio.play();
+//         playStatus = true;
+//         soundIcon();
+
+//     } else if (playStatus === true) {
+//         play_stop.className = "play"
+//         audio.pause();
+//         playStatus = false;
+//     }
+// };
+function loadNewTrack(index) {
+  
+    document.querySelector(".custom-slider-son").value = 25;
+    soundIcon();
+
+    var player = document.querySelector('#source-audio');
+    player.src = listAudio[index].file;
+    document.querySelector('.title').innerHTML = listAudio[index].name;
+    this.currentAudio = document.getElementById("myAudio");
+    this.currentAudio.load();
+    this.toggleAudio();
+    this.updateStylePlaylist(this.indexAudio, index);
+    this.indexAudio = index;
+            playStatus = true;
+
+    // let myindex = indexAudio;
+    // console.log(myindex);
+ 
+ 
+}
 var playListItems = document.querySelectorAll(".playlist-track-ctn");
 
 for (let i = 0; i < playListItems.length; i++) {
@@ -822,14 +838,15 @@ currentAudio.onloadedmetadata = function () {
 var interval1;
 
 function toggleAudio() {
-
-  if (this.currentAudio.paused) {
+  document.querySelector(".custom-slider-son").value = 25;
+  soundIcon();
+  if (this.currentAudio.paused)   {
     document.querySelector('#icon-play').style.display = 'none';
     document.querySelector('#icon-pause').style.display = 'block';
     document.querySelector('#ptc-' + this.indexAudio).classList.add("active-track");
     this.playToPause(this.indexAudio)
     this.currentAudio.play();
-  } else {
+  } else   {
     document.querySelector('#icon-play').style.display = 'block';
     document.querySelector('#icon-pause').style.display = 'none';
     this.pauseToPlay(this.indexAudio)
@@ -842,27 +859,27 @@ function pauseAudio() {
   clearInterval(interval1);
 }
 
-var timer = document.getElementsByClassName('timer')[0]
+// var timer = document.getElementsByClassName('timer')[0]
 
-var barProgress = document.querySelector(".custom-slider-avance");
+// var barProgress = document.querySelector(".custom-slider-avance");
 
 
-var width = 0;
+// var width = 0;
 
-function onTimeUpdate() {
-  var t = this.currentAudio.currentTime
-  timer.innerHTML = this.getMinutes(t);
-  this.setBarProgress();
-  if (this.currentAudio.ended) {
-    document.querySelector('#icon-play').style.display = 'block';
-    document.querySelector('#icon-pause').style.display = 'none';
-    this.pauseToPlay(this.indexAudio)
-    if (this.indexAudio < listAudio.length - 1) {
-      var index = parseInt(this.indexAudio) + 1
-      this.loadNewTrack(index)
-    }
-  }
-}
+// function onTimeUpdate() {
+//   var t = this.currentAudio.currentTime
+//   timer.innerHTML = this.getMinutes(t);
+//   this.setBarProgress();
+//   if (this.currentAudio.ended) {
+//     document.querySelector('#icon-play').style.display = 'block';
+//     document.querySelector('#icon-pause').style.display = 'none';
+//     this.pauseToPlay(this.indexAudio)
+//     if (this.indexAudio < listAudio.length - 1) {
+//       var index = parseInt(this.indexAudio) + 1
+//       this.loadNewTrack(index)
+//     }
+//   }
+// }
 
 
 function setBarProgress() {
@@ -895,12 +912,11 @@ function seek(event) {
 
 function forward() {
   this.currentAudio.currentTime = this.currentAudio.currentTime + 5
-  this.setBarProgress();
+
 }
 
 function rewind() {
   this.currentAudio.currentTime = this.currentAudio.currentTime - 5
-  this.setBarProgress();
 }
 
 
@@ -947,25 +963,26 @@ function toggleMute() {
   var voloff = document.querySelector('.sound_off');
   var vollow = document.querySelector('.sound_low');
   var volhight = document.querySelector('.sound_hight');
-  if (this.currentAudio.muted == false) {
+  if (this.currentAudio.muted == false)  {
     this.currentAudio.muted = true;
     vollow.style.display = "none";
     volhight.style.display = "none";
     voloff.style.display = "block";
 
-  } else if (this.currentAudio.muted = true || (soundValue > 0 & soundValue <= 50)) {
+  } else if (this.currentAudio.muted = true & (soundValue > 0 & soundValue <= 50)) {
     this.currentAudio.muted = false;
     voloff.style.display = "none";
     vollow.style.display = "block";
     volhight.style.display = "none";
   }
-  else if (this.currentAudio.muted = false || (soundValue > 50 & soundValue < 101)) {
+  else if (this.currentAudio.muted = true & (soundValue > 50 & soundValue < 101)) {
     this.currentAudio.muted = false;
     voloff.style.display = "none";
     vollow.style.display = "none";
     volhight.style.display = "block";
   }
 }
+
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
