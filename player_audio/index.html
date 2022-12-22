@@ -108,7 +108,7 @@
                     <div class="btn-action first-btn" onclick="replay()">
                         <div id="btn-faws-back">
                             <img src="./assets/img/reset.png" alt="écouter la musique précedente"
-                                class="btn_precedente">
+                                class="btn_replay">
                             <i class='fas fa-step-backward boutonControl'></i>
                         </div>
                     </div>
@@ -116,6 +116,8 @@
                         <div id="btn-faws-back">
                             <img src="./assets/img/previous-title-dark.png" alt="écouter la musique précedente"
                                 class="btn_precedente">
+                            <img src="./assets/img/previous-title.png" alt="écouter la musique précedente"
+                                class="btn_precedente_vert" style="display: none;">
                             <i class='fas fa-step-backward boutonControl'></i>
                         </div>
                     </div>
@@ -140,13 +142,16 @@
                         <div id="btn-faws-forward">
                             <img src="./assets/img/skip-next.png" alt="suater quelques seconde de la musique en cours"
                                 class="btn_avance">
+                           
                             <i class='fas fa-forward'></i>
                         </div>
                     </div>
                     <div class="btn-action" onclick="next()">
                         <div id="btn-faws-next">
                             <img src="./assets/img/next-title-dark.png" alt="écouter la musique suivante"
-                                class="btn_suivante">
+                                class="btn_suivante" style="display: block;">
+                                <img src="./assets/img/next-title.png" alt="écouter la musique suivante"
+                                class="btn_suivante_vert" style="display: none;">
 
                             <i class='fas fa-step-forward'></i>
                         </div>

@@ -287,7 +287,7 @@ p {
     overflow-y: scroll;
     scroll-behavior: smooth;
     margin-bottom: 50px;
-    color: var(--red);
+    color: var(--primary-dark);
     text-align: center;
     padding-top: 100px;
     /* scrollbar-color: var(--primary-color) var(--vert); */
@@ -484,7 +484,10 @@ input[type=range].custom-slider-avance::-moz-range-progress {
 .btn_reset,
 .btn_precedente,
 .btn_suivante,
-.btn_aléatoire {
+.btn_aléatoire,
+.btn_suivante_vert,
+.btn_precedente_vert,
+.btn_replay {
     width: 30px;
     height: 30px;
 }
@@ -549,7 +552,14 @@ input[type=range].custom-slider-avance::-moz-range-progress {
     display: block;
     position: relative;
 }
-
+.C_show {
+    position: absolute;
+    display: block;
+}
+.C_cache {
+    position: absolute;
+    display: none;
+}
 
 .C_sound_hidden {
     display: block;

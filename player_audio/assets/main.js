@@ -579,7 +579,11 @@ function sound_remove(selecteur, sty) {
 let recharg = document.querySelector("#library-link");
 recharg.addEventListener("click", (e) => {
   list_recharge(".con_titles_en_lecture", "C_con_titles_en_lecture");
-
+  document.querySelector('.btn_suivante').style.display = 'none';
+  document.querySelector('.btn_suivante_vert').style.display = 'block';
+  
+  document.querySelector('.btn_precedente_vert').style.display = 'block';
+  document.querySelector('.btn_precedente').style.display = 'none';
 
 }
 );
@@ -798,6 +802,7 @@ function loadNewTrack(index) {
   this.updateStylePlaylist(this.indexAudio, index);
   this.indexAudio = index;
   playStatus = true;
+ 
 
   // let myindex = indexAudio;
   // console.log(myindex);
@@ -929,6 +934,7 @@ function next() {
     this.indexAudio++;
     updateStylePlaylist(oldIndex, this.indexAudio)
     this.loadNewTrack(this.indexAudio);
+ 
   }
 }
 
@@ -1028,12 +1034,17 @@ playe_album.addEventListener("click", (e) => {
 
 let reset = document.querySelector(".reset_playe_audio");
 reset.addEventListener("click", (e) => {
-  document.querySelector(".custom-slider-son").value = 0;
   soundIcon();
- let message= document.querySelector(".con_titles_en_lecture").innerHTML = "Veuillez recharger la page pour pouvoir créer votre Playlist";
+  document.querySelector(".custom-slider-son").value = 0;
+  document.querySelector('.btn_suivante').style.display = 'block';
+  document.querySelector('.btn_suivante_vert').style.display = 'none';
+  
+  document.querySelector('.btn_precedente').style.display = 'block';
+  document.querySelector('.btn_precedente_vert').style.display = 'none';
+ let message= document.querySelector(".con_titles_en_lecture").innerHTML = "Veuillez recharger la page pour pouvoir re-créer votre Playlist, <br> <br> &Agrave; bientôt ! ";
  message.style ="text-color:black";
   let vider = document.querySelector(".con_titles_en_lecture");
-  vider.style = 'background-color:#61DE84';
+  vider.style = 'background-color:#D2C5F9; padding-top:100px';
   replay();
 });
 
