@@ -149,7 +149,6 @@ a {
 /* fin reset CSS */
 
 /* *************************************************************************************************************************** */
-
 /* start Variables */
 
 :root {
@@ -166,7 +165,6 @@ a {
 }
 
 /* end Variables / Import */
-
 /* *************************************************************************************************************************** */
 
 /* start Project playe_audio */
@@ -178,8 +176,6 @@ main {
     justify-content: center;
     align-items: center;
 }
-
-
 
 p {
     color: var(--white);
@@ -220,9 +216,6 @@ p {
     padding-left: 15px;
     gap: 40px;
 }
-
-
-
 .cont_my_playlist,
 .cont_my_album {
     text-align: center;
@@ -277,12 +270,6 @@ p {
 }
 
 .con_titles_en_lecture {
-    /* width: 250px;
-    height: 20px;
-    font-size: 1em;
-    color: var(--white);
-    margin-bottom: 27px; */
-
     display: flex;
     background-color: var(--vert);
     margin-top: 3px;
@@ -294,7 +281,6 @@ p {
     color: var(--primary-dark);
     text-align: center;
     padding-top: 100px;
-    /* scrollbar-color: var(--primary-color) var(--vert); */
     scrollbar-width: none;
 }
 
@@ -419,35 +405,6 @@ p {
     outline: none;
 }
 
-/* la zone de déplacement */
-input[type=range].custom-slider-avance::-moz-range-track {
-    height: 5px;
-    border: none;
-    border-radius: 3px;
-    background-color: var(--white);
-    /*supprime barre progression avant*/
-}
-
-/* le curseur */
-input[type=range].custom-slider-avance::-moz-range-thumb {
-
-    width: 13px;
-    height: 13px;
-    border: none;
-    /* s'adapte à la hauteur de l'input */
-    border-radius: 50%;
-    /* supprimer le rayon */
-    background: var(--vert);
-}
-
-/* barre progression avant */
-input[type=range].custom-slider-avance::-moz-range-progress {
-    height: 5px;
-    border-radius: 3px;
-
-    background: var(--vert);
-    /* supprime barre progression avant */
-}
 
 .footer {
     width: 690px;
@@ -476,18 +433,6 @@ input[type=range].custom-slider-avance::-moz-range-progress {
     height: 37px;
 }
 
-/* .con_boutons {
-    width: 284px;
-    height: 45px;
-    border-radius: 5px;
-    background-color: var(--secondary-light);
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    padding-right: 5px;
-    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.25);
-} */
-
 .btn_reset,
 .btn_precedente,
 .btn_suivante,
@@ -515,13 +460,6 @@ input[type=range].custom-slider-avance::-moz-range-progress {
     position: absolute;
 }
 
-
-
-
-/* #play_stop{
-    display: block;
-    position: absolute;
-} */
 #icon-play,
 #icon-pause {
     width: 40px;
@@ -532,11 +470,6 @@ input[type=range].custom-slider-avance::-moz-range-progress {
     display: block;
     position: absolute;
 }
-
-/* .fa-play{
-    display: block;
-    position: absolute;
-} */
 
 .son_stop {
     position: relative;
@@ -643,217 +576,11 @@ input[type=range].custom-slider-avance::-moz-range-progress {
     outline: none;
 }
 
-/* la zone de déplacement */
-input[type=range].custom-slider-son::-moz-range-track {
-    height: 3px;
-    border: none;
-    border-radius: 0;
-    background-color: var(--white);
-    /*supprime barre progression avant*/
-}
-
-/* le curseur */
-input[type=range].custom-slider-son::-moz-range-thumb {
-    width: 10px;
-    height: 10px;
-    border: none;
-    /* s'adapte à la hauteur de l'input */
-    border-radius: 50%;
-    /* supprimer le rayon */
-    background: var(--orange);
-}
-
-/* barre progression avant */
-input[type=range].custom-slider-son::-moz-range-progress {
-    height: 3px;
-    background: var(--orange);
-    /* supprime barre progression avant */
-}
-
-
 
 .reset_playe_audio {
     width: 44px;
     height: 44px;
     margin-left: 18px;
-}
-
-/* .container_2:hover{
-    opacity: 80%;
-    } */
-
-    input[type=range].custom-slider-son::-moz-range-thumb:hover,
-    input[type=range].custom-slider-avance::-moz-range-thumb:hover {
-    transform: scale(1.5,1.5);
-
-opacity: 80%;
-
-}
-
-p:hover {
-    color: rosybrown;
-}
-
-.btn-ctn img:hover {
-    opacity: 40%;
-    transform: scale(1.5, 1.3);
-}
-
-.sound_off:hover,
-.sound_low:hover,
-.sound_hight:hover {
-    opacity: 50%;
-    transform: scale(1.3, 1.3);
-
-}
-
-.chariot:hover {
-    opacity: 50%;
-    transform: scale(2, 2);
-    margin-top: 11px;
-}
-
-.chariot_grand:hover {
-    opacity: 80%;
-}
-
-.cadre_stromae:hover {
-    opacity: 80%;
-    transform: scale(1.2, 1.1);
-
-}
-
-.cadre_stromae img:hover {
-    opacity: 80%;
-    transform: scale(1.3, 1.3);
-
-}
-
-#ptc-0:hover,
-#ptc-1:hover,
-#ptc-2:hover,
-#ptc-3:hover,
-#ptc-4:hover,
-#ptc-5:hover,
-#ptc-6:hover,
-#ptc-7:hover,
-#ptc-8:hover {
-    opacity: 90%;
-    transform: scale(1, 1.2);
-}
-
-.reset_playe_audio:hover {
-    opacity: 80%;
-    transform: scale(1.5, 1.5);
-}
-
-.con_img_title img:hover {
-    opacity: 80%;
-    transform: scale(1.3, 1.3);
-
-}
-
-/****************** Début_Calculatrice**********************************************************/
-/* button:active {
-    box-shadow: 0 1px #a8a8a8;
-    transform: translateY(1px);
-} */
-
-/* body {
-    max-width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: sans-serif;
-    background-image: linear-gradient(to top #a18cd1 0%, #fbc2eb 100%);
-
-}
-
-.calculatrice {
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 3px 10px 2px black;
-    border: ridge 2px rgb(227, 22, 213);
-}
-
-.ecran {
-    width: 224px;
-    height: 70px;
-    background-color: rgb(208, 208, 240);
-    margin-bottom: 10px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    padding: 5px;
-    font-size: 25px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    color: rgb(227, 22, 213);
-    font-size: 30px;
-    font-weight: bold;
-    overflow: hidden;
-}
-
-.touches {
-    display: grid;
-    grid-template-columns: repeat(4, 50px);
-    grid-template-rows: repeat(6, 50px);
-    gap: 8px;
-}
-
-button {
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    background-color: #f7f7f7;
-    box-shadow: 0 3px #a8a8a8;
-    font-size: 22px;
-    font-weight: bold;
-    border: solid 1px rgb(227, 22, 213);
-    color: black;
-
-}
-
-
-button:active {
-    box-shadow: 0 1px #a8a8a8;
-    transform: translateY(1px);
-}
-
-button[data-key="8"] {
-    background-color: #ff9900;
-    font-size: bold;
-    color: white;
-    font-size: 17px;
-}
-
-button[data-key="13"] {
-    grid-column: span 2;
-    background-color: #36e700;
-    font-weight: bold;
-    color: white;
-    font-size: 35px;
-
-
-}
-
-button[data-key="65"],
-button[data-key="66"],
-button[data-key="67"],
-button[data-key="68"] {
-    font-size: bold;
-    font-size: 17px;
-} */
-/****************** Fin_Calculatrice**********************************************************/
-body {
-    background-color: #2d2d2d;
-    color: #ffc266;
-    font-family: 'Roboto', sans-serif;
 }
 
 #myProgress {
@@ -870,10 +597,6 @@ body {
     border-radius: 10px;
 }
 
-.logo {
-    fill: red;
-}
-
 .btn-action>div {
     cursor: pointer;
     /* padding-top: 10px; */
@@ -885,8 +608,6 @@ body {
 }
 
 /* con_boutons */
-
-
 .btn-ctn {
     width: 284px;
     height: 45px;
@@ -908,36 +629,15 @@ body {
     justify-content: center;
 }
 
-
-/* .btn-ctn > div {
-    width: 30px;
-    height: 30px;
-   margin-top: 18px;
-   margin-bottom: 18px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   align-content: center;
-  } */
-
-/* .btn-ctn > div > img{
-align-items: center;
-align-self: center;
-
-} */
-/* .btn-ctn div > i{
-    width: 40px;
-    height: 40px;
-    background-color: orange;
-  } */
-.infos-ctn>div {
+/* Début en diplay:non pour le moment */
+/* .infos-ctn>div {
     margin-bottom: 8px;
     color: var(--white);
     font-size: 0.6em;
     text-align: left;
-    /* overflow: hidden; */
-}
-
+    overflow: hidden;
+} */
+/* Fin en diplay:non pour le moment */
 .first-btn {
     margin-left: 3px;
 }
@@ -1034,7 +734,228 @@ align-self: center;
 }
 
 
+/* Réinitialiser les input de progression */
+
+/* partie commune */
+input[type=range].custom-slider {
+    padding: 0;                   /* nécessaire pour IE */
+    font: inherit;                /* même rendu suivant font document */
+    outline: none;
+    color: #069;                  /* sert pour couleur de référence, via currentColor, pour le curseur */
+    opacity: .8;
+    background: #CCC;             /* sert pour couleur de fond de la zone de déplacement */
+    box-sizing: border-box;       /* même modèle de boîte pour tous */
+    transition: opacity .2s;
+    cursor: pointer;
+  }
+
+/* Pour Chrome */
+  /* la zone de déplacement */
+input[type=range].custom-slider::-webkit-slider-runnable-track {
+    height: 100%;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;  /* supprimé définie sur l'input */
+  }
+  /* le curseur */
+  input[type=range].custom-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;       /* également nécessaire sur le curseur */
+    width: 1em;
+    height: inherit;                /* s'adapte à la hauteur de l'input */
+    border: none;
+    border-radius: 0;               /* pris en compte sur Webkit et Edge */
+    background: currentColor;       /* pris en compte sur Webkit only */
+  }
+
+/* Firefox */
+/* la zone de déplacement */
+input[type=range].custom-slider::-moz-range-track {
+    height: 100%;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;  /* supprimé définie sur l'input */
+  }
+  /* le curseur */
+  input[type=range].custom-slider::-moz-range-thumb {
+    width: 1em;
+    height: inherit;                /* s'adapte à la hauteur de l'input */
+    border: none;                   /* supprimer la bordure */
+    border-radius: 0;               /* supprimer le rayon */
+    background: currentColor;
+  }
+  /* barre progression avant */
+  input[type=range].custom-slider::-moz-range-progress {
+    height: 0;
+    background: transparent;        /* supprime barre progression avant */
+  }
 
 
+  /* IE, Egde */
+/* la zone de déplacement */
+input[type=range].custom-slider::-ms-track {
+    height: 100%;
+    border: none;
+    border-radius: 0;
+    color: transparent;             /* supprime les graduations pour IE */
+    background-color: transparent;  /* supprimé définie sur l'input */
+  }
+  /* le curseur */
+  input[type=range].custom-slider::-ms-thumb {
+    width: 1em;
+    height: inherit;                /* s'adapte à la hauteur de l'input */
+    border: none;                   /* supprimer la bordure */
+    border-radius: 0;               /* supprimer le rayon */
+    background: currentColor;
+  }
+  /* la tooltip de la valeur */
+  input[type=range].custom-slider::-ms-tooltip {
+    display: none;                  /* supprime l'affichage de la valeur au survol */
+  }
+  /* barre progression avant */
+  input[type=range].custom-slider::-ms-fill-lower {
+    background: transparent;
+  }
+  /* barre progression après */
+  input[type=range].custom-slider::-ms-fill-upper {
+    background: transparent;
+  }
+
+
+
+
+/* Pour mon audio player *********************************************************************************/
+/* Progression de la musique */
+/* la zone de déplacement */
+input[type=range].custom-slider-avance::-moz-range-track {
+    height: 5px;
+    border: none;
+    border-radius: 3px;
+    background-color: var(--white);
+    /*supprime barre progression avant*/
+}
+
+/* le curseur */
+input[type=range].custom-slider-avance::-moz-range-thumb {
+
+    width: 13px;
+    height: 13px;
+    border: none;
+    /* s'adapte à la hauteur de l'input */
+    border-radius: 50%;
+    /* supprimer le rayon */
+    background: var(--vert);
+}
+
+/* barre progression avant */
+input[type=range].custom-slider-avance::-moz-range-progress {
+    height: 5px;
+    border-radius: 3px;
+
+    background: var(--vert);
+    /* supprime barre progression avant */
+}
+
+/* Progression de son */
+
+/* la zone de déplacement */
+input[type=range].custom-slider-son::-moz-range-track {
+    height: 3px;
+    border: none;
+    border-radius: 0;
+    background-color: var(--white);
+    /*supprime barre progression avant*/
+}
+
+/* le curseur */
+input[type=range].custom-slider-son::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    border: none;
+    /* s'adapte à la hauteur de l'input */
+    border-radius: 50%;
+    /* supprimer le rayon */
+    background: var(--orange);
+}
+
+/* barre progression avant */
+input[type=range].custom-slider-son::-moz-range-progress {
+    height: 3px;
+    background: var(--orange);
+    /* supprime barre progression avant */
+}
+
+/* Effet hover */
+
+input[type=range].custom-slider-son::-moz-range-thumb:hover,
+input[type=range].custom-slider-avance::-moz-range-thumb:hover {
+    transform: scale(1.5, 1.5);
+
+    opacity: 80%;
+
+}
+
+p:hover {
+    color: rosybrown;
+}
+
+.btn-ctn img:hover {
+    opacity: 40%;
+    transform: scale(1.5, 1.3);
+}
+
+.sound_off:hover,
+.sound_low:hover,
+.sound_hight:hover {
+    opacity: 50%;
+    transform: scale(1.3, 1.3);
+
+}
+
+.chariot:hover {
+    opacity: 70%;
+    transform: scale(2, 2);
+    margin-top: 11px;
+
+}
+
+.chariot_grand:hover {
+    opacity: 80%;
+}
+
+.cadre_stromae:hover {
+    opacity: 80%;
+    transform: scale(1.2, 1.1);
+
+}
+
+.cadre_stromae img:hover {
+    opacity: 80%;
+    transform: scale(1.3, 1.3);
+
+}
+
+#ptc-0:hover,
+#ptc-1:hover,
+#ptc-2:hover,
+#ptc-3:hover,
+#ptc-4:hover,
+#ptc-5:hover,
+#ptc-6:hover,
+#ptc-7:hover,
+#ptc-8:hover {
+    opacity: 90%;
+    transform: scale(1, 1.2);
+}
+
+.reset_playe_audio:hover {
+    opacity: 80%;
+    transform: scale(1.5, 1.5);
+}
+
+.con_img_title img:hover {
+    opacity: 80%;
+    transform: scale(1.3, 1.3);
+
+}
 
 /*  *************************************************/
