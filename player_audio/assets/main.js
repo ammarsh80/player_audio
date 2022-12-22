@@ -236,11 +236,11 @@ function loadNewTrack(index) {
   let player = document.querySelector('#source-audio');
   player.src = listAudio[index].file;
   document.querySelector('.title').innerHTML = listAudio[index].name;
-  this.currentAudio = document.getElementById("myAudio");
-  this.currentAudio.load();
-  this.toggleAudio();
-  this.updateStylePlaylist(this.indexAudio, index);
-  this.indexAudio = index;
+  currentAudio = document.getElementById("myAudio");
+  currentAudio.load();
+  toggleAudio();
+  updateStylePlaylist(indexAudio, index);
+  indexAudio = index;
   stratSon();
 
 }
@@ -248,15 +248,15 @@ function loadNewTrack(index) {
 let playListItems = document.querySelectorAll(".playlist-track-ctn");
 
 for (let i = 0; i < playListItems.length; i++) {
-  playListItems[i].addEventListener("click", getClickedElement.bind(this));
+  playListItems[i].addEventListener("click", getClickedElement.bind());
 }
 
 function getClickedElement(event) {
   for (let i = 0; i < playListItems.length; i++) {
     if (playListItems[i] == event.target) {
       let clickedIndex = event.target.getAttribute("data-index")
-      if (clickedIndex == this.indexAudio) { // alert('Same audio');
-        this.toggleAudio()
+      if (clickedIndex == indexAudio) { // alert('Same audio');
+        toggleAudio()
       } else {
         loadNewTrack(clickedIndex);
       }
@@ -286,48 +286,48 @@ function toggleAudio() {
     document.querySelector('#icon-play').style.display = 'block';
     document.querySelector('#icon-pause').style.display = 'none';
     this.pauseToPlay(this.indexAudio)
-    this.currentAudio.pause();
+    currentAudio.pause();
   }
 }
 
 function pauseAudio() {
-  this.currentAudio.pause();
+  currentAudio.pause();
   clearInterval(interval1);
 }
 
 function forward() {
-  this.currentAudio.currentTime = this.currentAudio.currentTime + 5
+  currentAudio.currentTime = currentAudio.currentTime + 5
 
 }
 
 function rewind() {
-  this.currentAudio.currentTime = this.currentAudio.currentTime - 5
+  currentAudio.currentTime = currentAudio.currentTime - 5
 }
 
 function next() {
-  if (this.indexAudio < listAudio.length - 1) {
-    let oldIndex = this.indexAudio
-    this.indexAudio++;
-    updateStylePlaylist(oldIndex, this.indexAudio)
-    this.loadNewTrack(this.indexAudio);
+  if (indexAudio < listAudio.length - 1) {
+    let oldIndex = indexAudio
+    indexAudio++;
+    updateStylePlaylist(oldIndex, indexAudio)
+    loadNewTrack(indexAudio);
 
   }
 }
 
 function previous() {
-  if (this.indexAudio > 0) {
-    let oldIndex = this.indexAudio
-    this.indexAudio--;
-    updateStylePlaylist(oldIndex, this.indexAudio)
-    this.loadNewTrack(this.indexAudio);
+  if (indexAudio > 0) {
+    let oldIndex = indexAudio
+    indexAudio--;
+    updateStylePlaylist(oldIndex, indexAudio)
+    loadNewTrack(indexAudio);
   }
 }
 
 function updateStylePlaylist(oldIndex, newIndex) {
   document.querySelector('#ptc-' + oldIndex).classList.remove("active-track");
-  this.pauseToPlay(oldIndex);
+  pauseToPlay(oldIndex);
   document.querySelector('#ptc-' + newIndex).classList.add("active-track");
-  this.playToPause(newIndex)
+  playToPause(newIndex)
 }
 
 function playToPause(index) {
@@ -348,20 +348,20 @@ function toggleMute() {
   let voloff = document.querySelector('.sound_off');
   let vollow = document.querySelector('.sound_low');
   let volhight = document.querySelector('.sound_hight');
-  if (this.currentAudio.muted == false) {
-    this.currentAudio.muted = true;
+  if (currentAudio.muted == false) {
+    currentAudio.muted = true;
     vollow.style.display = "none";
     volhight.style.display = "none";
     voloff.style.display = "block";
 
-  } else if (this.currentAudio.muted = true && (soundValue > 0 && soundValue <= 50)) {
-    this.currentAudio.muted = false;
+  } else if (currentAudio.muted = true && (soundValue > 0 && soundValue <= 50)) {
+    currentAudio.muted = false;
     voloff.style.display = "none";
     vollow.style.display = "block";
     volhight.style.display = "none";
   }
-  else if (this.currentAudio.muted = true && (soundValue > 50 && soundValue < 101)) {
-    this.currentAudio.muted = false;
+  else if (currentAudio.muted = true && (soundValue > 50 && soundValue < 101)) {
+    currentAudio.muted = false;
     voloff.style.display = "none";
     vollow.style.display = "none";
     volhight.style.display = "block";
@@ -381,7 +381,7 @@ function randomSong() {
   loadNewTrack(indexAudio);
   console.log("indexAudio" + indexAudio);
 
-  this.loadNewTrack(this.indexAudio);
+  loadNewTrack(indexAudio);
 }
 
 let countreplay = 0;
@@ -392,7 +392,7 @@ function replay() {
   indexAudio--;
   console.log(indexAudio);
   loadNewTrack(indexAudio);
-  this.loadNewTrack(this.indexAudio);
+  loadNewTrack(indexAudio);
 
 }
 
@@ -416,7 +416,7 @@ playe_album.addEventListener("click", (e) => {
 });
 
 let reset = document.querySelector(".reset_playe_audio");
-let countReset=0;
+let countReset = 0;
 
 reset.addEventListener("click", (e) => {
   countReset++;
@@ -427,7 +427,7 @@ reset.addEventListener("click", (e) => {
 
   document.querySelector('.btn_precedente').style.display = 'block';
   document.querySelector('.btn_precedente_vert').style.display = 'none';
-  let message = document.querySelector(".con_titles_en_lecture").innerHTML = "Please, Click here to refresh the page and be able to re-create your Playlist, <br> <br> See You Soon ! ! ";
+  let message = document.querySelector(".con_titles_en_lecture").innerHTML = "Please, Click here to refresh the page and re-create your Playlist, <br> <br> See You Soon ! ! ";
   message.style = "text-color:black";
   let vider = document.querySelector(".con_titles_en_lecture");
   vider.style = 'background-color:#D2C5F9; padding-top:100px; padding-left:25px; padding-right:25px';
@@ -435,14 +435,9 @@ reset.addEventListener("click", (e) => {
 });
 
 
-// function rechargePage(){
-//  document. .reload();
-
-// }
-
-let reload= document.querySelector(".con_titles_en_lecture");
-reload.addEventListener("click", (e)=>{
-  if (countReset==1){
+let reload = document.querySelector(".con_titles_en_lecture");
+reload.addEventListener("click", (e) => {
+  if (countReset == 1) {
     countReset--;
     location.reload();
   }
@@ -460,7 +455,9 @@ currentAudio.addEventListener("ended", (e) => {
     replay();
     console.log("countreplay" + countreplay);
   }
-  else {
+    else { if (indexAudio==listAudio.length){
+      indexAudio=0;
+    }
     next();
   }
 })

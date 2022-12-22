@@ -309,10 +309,13 @@ p {
     flex-direction: column;
     justify-content: left;
     gap: 21px;
+    margin-top: 5px;
     padding: 0px 0px;
     margin-left: 10px;
     display: block;
     font-family: inter, Arial, Helvetica, sans-serif;
+    margin-left: 30px;
+
 
 }
 
@@ -495,10 +498,12 @@ input[type=range].custom-slider-avance::-moz-range-progress {
     width: 30px;
     height: 30px;
 }
-.btn_aleatoire{
+
+.btn_aleatoire {
     width: 25px;
     height: 25px;
 }
+
 .btn_recule,
 .btn_avance {
     width: 35px;
@@ -677,39 +682,51 @@ input[type=range].custom-slider-son::-moz-range-progress {
     opacity: 80%;
     } */
 
-p:hover {
-color: rosybrown;
+    input[type=range].custom-slider-son::-moz-range-thumb:hover,
+    input[type=range].custom-slider-avance::-moz-range-thumb:hover {
+    transform: scale(1.5,1.5);
+
+opacity: 80%;
+
 }
 
-.btn-ctn img:hover{
-    opacity: 50%;
-    transform: scale(1.5 ,1.3);
+p:hover {
+    color: rosybrown;
 }
+
+.btn-ctn img:hover {
+    opacity: 40%;
+    transform: scale(1.5, 1.3);
+}
+
 .sound_off:hover,
 .sound_low:hover,
-.sound_hight:hover{
-    transform: scale(1.3 ,1.3);
-    
+.sound_hight:hover {
+    opacity: 50%;
+    transform: scale(1.3, 1.3);
+
 }
 
-.chariot:hover{
+.chariot:hover {
     opacity: 50%;
-    transform: scale(2 ,2);
+    transform: scale(2, 2);
     margin-top: 11px;
 }
-.chariot_grand:hover{
+
+.chariot_grand:hover {
     opacity: 80%;
 }
 
-.cadre_stromae:hover{
+.cadre_stromae:hover {
     opacity: 80%;
-    transform: scale(1.2 ,1.1);
-    
+    transform: scale(1.2, 1.1);
+
 }
-.cadre_stromae img:hover{
+
+.cadre_stromae img:hover {
     opacity: 80%;
-    transform: scale(1.3 ,1.3);
-    
+    transform: scale(1.3, 1.3);
+
 }
 
 #ptc-0:hover,
@@ -720,16 +737,22 @@ color: rosybrown;
 #ptc-5:hover,
 #ptc-6:hover,
 #ptc-7:hover,
-#ptc-8:hover
-{
+#ptc-8:hover {
     opacity: 90%;
-    transform: scale(1 ,1.2);
+    transform: scale(1, 1.2);
 }
 
-.reset_playe_audio:hover{
+.reset_playe_audio:hover {
     opacity: 80%;
-    transform: scale(1.5 ,1.5);
+    transform: scale(1.5, 1.5);
 }
+
+.con_img_title img:hover {
+    opacity: 80%;
+    transform: scale(1.3, 1.3);
+
+}
+
 /****************** Début_Calculatrice**********************************************************/
 /* button:active {
     box-shadow: 0 1px #a8a8a8;
