@@ -31,46 +31,6 @@
 // - preload="auto" : préchargement automtique.
 // Cet attribut preload est ignoré si l’attribut autoplay est présent.
 
-
-
-
-// ///////////////  Début En teste   /////////////////////////////////////////
-// const audio = document.querySelector("audio");
-// // const cover = document.querySelector(".song-info img");
-// const library = document.querySelector(".library");
-
-// const libraryLink = document.getElementById("library-link");
-// let librarySongs = Array.from(document.querySelectorAll(".library-song"));
-// // let playStatus = false;
-
-// libraryLink.addEventListener("click", openLibrary);
-
-// function openLibrary() {
-//   if (library.classList.contains("library-opened")) {
-//     library.classList.remove("library-opened");
-//     libraryLink.classList.remove("library-opened-link");
-//   } else {
-//     library.classList.add("library-opened");
-//     libraryLink.classList.add("library-opened-link");
-//   }
-// }
-// librarySongs.forEach((song) => {
-//   song.addEventListener("click", (e) => {
-//     librarySongs.forEach((otherSong) => {
-//       otherSong.classList.remove("selected");
-//     });
-//     e.target.classList.add("selected");
-//     songId = song.id;
-//     songs.filter((selectedSong) => {
-//       if (selectedSong.id == song.id) {
-//         playSong(selectedSong);
-//       }
-//     });
-//   });
-// });
-
-// ///////////////  Fin En teste   /////////////////////////////////////////
-
 /////////////////////////// à Garder
 
 /**
@@ -259,14 +219,21 @@ for (let i = 0; i < listAudio.length; i++) {
   createTrackItem(i, listAudio[i].name, listAudio[i].duration);
 
 }
-var indexAudio = 0;
 
-function loadNewTrack(index) {
+// Attention si je met (let indexAudio = 0;) il y a rien qui fonction !!! 
+//soit mettre (var indexAudio = 0;)
+//soit  (indexAudio = 0;)
+indexAudio = 0;
 
+
+function stratSon() {
   document.querySelector(".custom-slider-son").value = 25;
   soundIcon();
 
-  var player = document.querySelector('#source-audio');
+}
+
+function loadNewTrack(index) {
+  let player = document.querySelector('#source-audio');
   player.src = listAudio[index].file;
   document.querySelector('.title').innerHTML = listAudio[index].name;
   this.currentAudio = document.getElementById("myAudio");
@@ -274,26 +241,11 @@ function loadNewTrack(index) {
   this.toggleAudio();
   this.updateStylePlaylist(this.indexAudio, index);
   this.indexAudio = index;
-
+  stratSon();
 
 }
 
-// listAudio.forEach((song) => {
-//   song.addEventListener("click", (e) => {
-//     listAudio.forEach((otherSong) => {
-//       otherSong.classList.remove("selected");
-//     });
-//     e.target.classList.add("selected");
-//     songId = song.id;
-//     songs.filter((selectedSong) => {
-//       if (selectedSong.id == song.id) {
-//         playSong(selectedSong);
-//       }
-//     });
-//   });
-// });
-
-var playListItems = document.querySelectorAll(".playlist-track-ctn");
+let playListItems = document.querySelectorAll(".playlist-track-ctn");
 
 for (let i = 0; i < playListItems.length; i++) {
   playListItems[i].addEventListener("click", getClickedElement.bind(this));
@@ -302,7 +254,7 @@ for (let i = 0; i < playListItems.length; i++) {
 function getClickedElement(event) {
   for (let i = 0; i < playListItems.length; i++) {
     if (playListItems[i] == event.target) {
-      var clickedIndex = event.target.getAttribute("data-index")
+      let clickedIndex = event.target.getAttribute("data-index")
       if (clickedIndex == this.indexAudio) { // alert('Same audio');
         this.toggleAudio()
       } else {
@@ -313,32 +265,23 @@ function getClickedElement(event) {
 }
 
 
-// function continuMusique(){
-//  let duration= document.getElementsByClassName('duration')[0].innerHTML = this.getMinutes(this.currentAudio.duration);
-//  let progress = (this.currentAudio.currentTime / this.currentAudio.duration) * 100;
-
-// if(progress==100){
-//   next();
-// }
-// }
 document.querySelector('#source-audio').src = listAudio[indexAudio].file
 document.querySelector('.title').innerHTML = listAudio[indexAudio].name
 
-var currentAudio = document.getElementById("myAudio");
-
+let currentAudio = document.getElementById("myAudio");
 currentAudio.load()
 
-var interval1;
+let interval1;
 
 function toggleAudio() {
   document.querySelector(".custom-slider-son").value = 25;
   soundIcon();
-  if (this.currentAudio.paused) {
+  if (currentAudio.paused) {
     document.querySelector('#icon-play').style.display = 'none';
     document.querySelector('#icon-pause').style.display = 'block';
     document.querySelector('#ptc-' + this.indexAudio).classList.add("active-track");
     this.playToPause(this.indexAudio)
-    this.currentAudio.play();
+    currentAudio.play();
   } else {
     document.querySelector('#icon-play').style.display = 'block';
     document.querySelector('#icon-pause').style.display = 'none';
@@ -363,7 +306,7 @@ function rewind() {
 
 function next() {
   if (this.indexAudio < listAudio.length - 1) {
-    var oldIndex = this.indexAudio
+    let oldIndex = this.indexAudio
     this.indexAudio++;
     updateStylePlaylist(oldIndex, this.indexAudio)
     this.loadNewTrack(this.indexAudio);
@@ -373,7 +316,7 @@ function next() {
 
 function previous() {
   if (this.indexAudio > 0) {
-    var oldIndex = this.indexAudio
+    let oldIndex = this.indexAudio
     this.indexAudio--;
     updateStylePlaylist(oldIndex, this.indexAudio)
     this.loadNewTrack(this.indexAudio);
@@ -388,36 +331,36 @@ function updateStylePlaylist(oldIndex, newIndex) {
 }
 
 function playToPause(index) {
-  var ele = document.querySelector('#p-img-' + index)
+  let ele = document.querySelector('#p-img-' + index)
   ele.classList.remove("fa-play");
   ele.classList.add("fa-pause");
 }
 
 function pauseToPlay(index) {
-  var ele = document.querySelector('#p-img-' + index)
+  let ele = document.querySelector('#p-img-' + index)
   ele.classList.remove("fa-pause");
   ele.classList.add("fa-play");
 }
 
 function toggleMute() {
   const soundValue = document.querySelector(".sound-control input").value;
-  var btnMute = document.querySelector('#toggleMute');
-  var voloff = document.querySelector('.sound_off');
-  var vollow = document.querySelector('.sound_low');
-  var volhight = document.querySelector('.sound_hight');
+  let btnMute = document.querySelector('#toggleMute');
+  let voloff = document.querySelector('.sound_off');
+  let vollow = document.querySelector('.sound_low');
+  let volhight = document.querySelector('.sound_hight');
   if (this.currentAudio.muted == false) {
     this.currentAudio.muted = true;
     vollow.style.display = "none";
     volhight.style.display = "none";
     voloff.style.display = "block";
 
-  } else if (this.currentAudio.muted = true & (soundValue > 0 & soundValue <= 50)) {
+  } else if (this.currentAudio.muted = true && (soundValue > 0 && soundValue <= 50)) {
     this.currentAudio.muted = false;
     voloff.style.display = "none";
     vollow.style.display = "block";
     volhight.style.display = "none";
   }
-  else if (this.currentAudio.muted = true & (soundValue > 50 & soundValue < 101)) {
+  else if (this.currentAudio.muted = true && (soundValue > 50 && soundValue < 101)) {
     this.currentAudio.muted = false;
     voloff.style.display = "none";
     vollow.style.display = "none";
@@ -430,19 +373,22 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 
 }
-
+let countRandom = 0;
 function randomSong() {
+  countRandom++;
   let randomNombre = getRandomInt(listAudio.length)
   indexAudio = randomNombre;
   loadNewTrack(indexAudio);
-  console.log(indexAudio);
+  console.log("indexAudio" + indexAudio);
 
   this.loadNewTrack(this.indexAudio);
-
 }
 
+let countreplay = 0;
+
 function replay() {
-  indexAudio++;
+  countreplay++,
+    indexAudio++;
   indexAudio--;
   console.log(indexAudio);
   loadNewTrack(indexAudio);
@@ -470,7 +416,10 @@ playe_album.addEventListener("click", (e) => {
 });
 
 let reset = document.querySelector(".reset_playe_audio");
+let countReset=0;
+
 reset.addEventListener("click", (e) => {
+  countReset++;
   soundIcon();
   document.querySelector(".custom-slider-son").value = 0;
   document.querySelector('.btn_suivante').style.display = 'block';
@@ -478,9 +427,40 @@ reset.addEventListener("click", (e) => {
 
   document.querySelector('.btn_precedente').style.display = 'block';
   document.querySelector('.btn_precedente_vert').style.display = 'none';
-  let message = document.querySelector(".con_titles_en_lecture").innerHTML = "Please refresh the page to re-create your Playlist, <br> <br> See You Soon ! ! ";
+  let message = document.querySelector(".con_titles_en_lecture").innerHTML = "Please, Click here to refresh the page and be able to re-create your Playlist, <br> <br> See You Soon ! ! ";
   message.style = "text-color:black";
   let vider = document.querySelector(".con_titles_en_lecture");
   vider.style = 'background-color:#D2C5F9; padding-top:100px; padding-left:25px; padding-right:25px';
   replay();
 });
+
+
+// function rechargePage(){
+//  document. .reload();
+
+// }
+
+let reload= document.querySelector(".con_titles_en_lecture");
+reload.addEventListener("click", (e)=>{
+  if (countReset==1){
+    countReset--;
+    location.reload();
+  }
+})
+
+currentAudio.addEventListener("ended", (e) => {
+  if (countRandom == 1) {
+    countRandom--;
+    console.log("countRandom" + countRandom);
+    randomSong();
+    console.log("countRandom" + countRandom);
+  } else if (countreplay == 1) {
+    countreplay--,
+      console.log("countreplay" + countreplay);
+    replay();
+    console.log("countreplay" + countreplay);
+  }
+  else {
+    next();
+  }
+})
