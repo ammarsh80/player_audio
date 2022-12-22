@@ -22,9 +22,10 @@
     </audio>
     <main>
         <div class="container_1">
-            <input type="button" class="btn_fermer" value="X">
+            <!-- <input type="button" class="btn_fermer" value="X"> -->
             <div class="container_2">
                 <div class="cont_my_playlist">
+                   
                     <p id="library-link">My playlist</p>
                     <div class="container_title">
 
@@ -65,8 +66,13 @@
                         </div>
 
                         <p class="multitude">Stromae _ Multitude</p>
-                        <img src="./assets/img/chariot.png" alt="cadie pour achat" class="chariot">
-                        <img src="./assets/img/chariot_grand.png" alt="cadie pour achat" class="chariot_grand">
+                        <a href="index.html" title="Purchase it to listen your favorite artist!">
+                            
+                            <img src="./assets/img/chariot.png" alt="cadie pour achat" class="chariot">
+                        </a>
+                        <a href="index.html" title="Go to the purchase page">
+                            <img src="./assets/img/chariot_grand.png" alt="cadie pour achat" class="chariot_grand">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -160,7 +166,7 @@
                     <div class="btn-play" onclick="randomSong()">
                         <div id="btn-faws-forward">
                             <img src="./assets/img/random.png" alt="suater quelques seconde de la musique en cours"
-                                class="btn_aléatoire">
+                                class="btn_aleatoire">
                             <i class='fas fa-forward'></i>
                         </div>
                     </div>
@@ -185,12 +191,13 @@
                 </div>
                 <div class="son_stop" id="toggleMute">
                     <div class="soundIcon">
-
-                        <img src="./assets/img/sound-off.png" alt="son coupé" class="sound_off" onclick="toggleMute()">
-                        <img src="./assets/img/sound-low-2.png" alt="son moyen" class="sound_low"
+                        <a href="index.html" onclick="return false"; title="Mute">
+                            <img src="./assets/img/sound-off.png" alt="son coupé" class="sound_off" onclick="toggleMute()">
+                            <img src="./assets/img/sound-low-2.png" alt="son moyen" class="sound_low"
                             onclick="toggleMute()">
-                        <img src="./assets/img/sound-high-2.png" alt="son haut" class="sound_hight"
+                            <img src="./assets/img/sound-high-2.png" alt="son haut" class="sound_hight"
                             onclick="toggleMute()">
+                        </a>
                     </div>
 
                     <div class="barre_sound sound-control">
@@ -200,7 +207,9 @@
                         </div>
                         <input type="range" max="100" step="1" class="custom-slider-son" value="0" />
                     </div>
-                    <img src="./assets/img/stop-circle.png" alt="réinitialiser playe audio" class="reset_playe_audio">
+                    <a href="index.html" onclick="return false"; title="Reset player audio">
+                        <img src="./assets/img/stop-circle.png" alt="réinitialiser playe audio" class="reset_playe_audio">
+                    </a>
 
                 </div>
             </div>
