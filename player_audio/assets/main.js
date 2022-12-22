@@ -71,10 +71,7 @@
 
 // ///////////////  Fin En teste   /////////////////////////////////////////
 
-/////////////////////////// testtttttttttttttttttttttttt
-
-
-
+/////////////////////////// à Garder
 
 /**
  * Donner une classe de style à une balise (Avec Toggle 0/1)
@@ -94,20 +91,6 @@ function sound_charge(selecteur, sty) {
   document.querySelector(selecteur).classList.add(sty);
 };
 
-// function soundIconToggle() {
-//   const soundValue = document.querySelector(".sound-control input").value;
-//     sound_charge_toggle(".sound_off", "C_sound_show");
-//     sound_remove(".sound_low", "C_sound_show");
-//     sound_remove(".sound_hight", "C_sound_show");
-//     sound_remove(".sound_off", "C_sound_hidden_sound_off");
-// }
-
-
-// function sound_charge_toggle(selecteur, st) {
-//   document.querySelector(selecteur).classList.toggle(st);
-// };
-
-
 /**
  * Enlever une classe de style 
  * @param {*} selecteur nom de la .class/#id (attention aux . & #) de la balise cible 
@@ -122,19 +105,12 @@ recharg.addEventListener("click", (e) => {
   list_recharge(".con_titles_en_lecture", "C_con_titles_en_lecture");
   document.querySelector('.btn_suivante').style.display = 'none';
   document.querySelector('.btn_suivante_vert').style.display = 'block';
-  
+
   document.querySelector('.btn_precedente_vert').style.display = 'block';
   document.querySelector('.btn_precedente').style.display = 'none';
 
 }
 );
-
-
-// function rechargplaylist () {
-//   console.log(countMyliste);
-//   list_recharge(".con_titles_en_lecture", "C_con_titles_en_lecture");
-
-// }
 
 //* sound control
 //* sound =0 onload
@@ -170,9 +146,7 @@ function soundIcon() {
     sound_charge(".sound_hight", "C_sound_show");
     return soundValue;
   }
-
 }
-
 
 /**
  * 
@@ -206,61 +180,37 @@ durationInput.addEventListener("change", () => {
   currentAudi.currentTime = durationInput.value;
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function createTrackItem(index, name, duration) {
-  var trackItem = document.createElement('div');
+  let trackItem = document.createElement('div');
   trackItem.setAttribute("class", "playlist-track-ctn");
   trackItem.setAttribute("id", "ptc-" + index);
   trackItem.setAttribute("data-index", index);
-  // document.querySelector(".playlist-ctn").appendChild(trackItem);
-
   document.querySelector(".con_titles_en_lecture").appendChild(trackItem);
 
-  var playBtnItem = document.createElement('div');
+  let playBtnItem = document.createElement('div');
   playBtnItem.setAttribute("class", "playlist-btn-play");
   playBtnItem.setAttribute("id", "pbp-" + index);
   document.querySelector("#ptc-" + index).appendChild(playBtnItem);
 
-  var btnImg = document.createElement('i');
+  let btnImg = document.createElement('i');
   btnImg.setAttribute("class", "fas fa-play");
   btnImg.setAttribute("height", "40");
   btnImg.setAttribute("width", "40");
   btnImg.setAttribute("id", "p-img-" + index);
   document.querySelector("#pbp-" + index).appendChild(btnImg);
-
-  var trackInfoItem = document.createElement('div');
+  // pour la'affichage des info de titre ne lecture en bas à gauche       /////// en display:non pour le moment
+  let trackInfoItem = document.createElement('div');
   trackInfoItem.setAttribute("class", "playlist-info-track");
   trackInfoItem.innerHTML = name
   document.querySelector("#ptc-" + index).appendChild(trackInfoItem);
 
-  var trackDurationItem = document.createElement('div');
+  let trackDurationItem = document.createElement('div');
   trackDurationItem.setAttribute("class", "playlist-duration");
   trackDurationItem.innerHTML = duration
   document.querySelector("#ptc-" + index).appendChild(trackDurationItem);
   document.querySelector(".custom-slider-son").value = 25;
 
 }
-
-
 
 let listAudio = [
   {
@@ -305,30 +255,12 @@ let listAudio = [
   }
 ]
 
-
-for (var i = 0; i < listAudio.length; i++) {
+for (let i = 0; i < listAudio.length; i++) {
   createTrackItem(i, listAudio[i].name, listAudio[i].duration);
 
 }
 var indexAudio = 0;
 
-
-// * démarrer/arrêter la musique
-// */
-// function playStop() {
-//     if ((playStatus === false) & (countMyliste % 2 == 1)) {
-//         document.querySelector(".custom-slider-son").value = 25;
-//         play_stop.className = "pause"
-//         audio.play();
-//         playStatus = true;
-//         soundIcon();
-
-//     } else if (playStatus === true) {
-//         play_stop.className = "play"
-//         audio.pause();
-//         playStatus = false;
-//     }
-// };
 function loadNewTrack(index) {
 
   document.querySelector(".custom-slider-son").value = 25;
@@ -374,7 +306,7 @@ function getClickedElement(event) {
       if (clickedIndex == this.indexAudio) { // alert('Same audio');
         this.toggleAudio()
       } else {
-          loadNewTrack(clickedIndex);
+        loadNewTrack(clickedIndex);
       }
     }
   }
@@ -392,15 +324,9 @@ function getClickedElement(event) {
 document.querySelector('#source-audio').src = listAudio[indexAudio].file
 document.querySelector('.title').innerHTML = listAudio[indexAudio].name
 
-
 var currentAudio = document.getElementById("myAudio");
 
 currentAudio.load()
-
-currentAudio.onloadedmetadata = function () {
-  document.getElementsByClassName('duration')[0].innerHTML = this.getMinutes(this.currentAudio.duration);
-  
-}.bind(this);
 
 var interval1;
 
@@ -426,57 +352,6 @@ function pauseAudio() {
   clearInterval(interval1);
 }
 
-// var timer = document.getElementsByClassName('timer')[0]
-
-// var barProgress = document.querySelector(".custom-slider-avance");
-
-
-// var width = 0;
-
-function onTimeUpdate() {
-  var t = this.currentAudio.currentTime
-  timer.innerHTML = this.getMinutes(t);
-  this.setBarProgress();
-  if (this.currentAudio.ended) {
-    document.querySelector('#icon-play').style.display = 'block';
-    document.querySelector('#icon-pause').style.display = 'none';
-    this.pauseToPlay(this.indexAudio)
-    if (this.indexAudio < listAudio.length - 1) {
-      var index = parseInt(this.indexAudio) + 1
-      this.loadNewTrack(index);
-    }
-  }
-}
-
-
-function setBarProgress() {
-  var progress = (this.currentAudio.currentTime / this.currentAudio.duration) * 100;
-  document.querySelector(".custom-slider-avance").style.width = progress + "%";
-}
-
-
-function getMinutes(t) {
-  var min = parseInt(parseInt(t) / 60);
-  var sec = parseInt(t % 60);
-  if (sec < 10) {
-    sec = "0" + sec
-  }
-  if (min < 10) {
-    min = "0" + min
-  }
-  return min + ":" + sec
-}
-
-var progressbar = document.querySelector('#myProgress')
-progressbar.addEventListener("click", seek.bind(this));
-
-
-function seek(event) {
-  var percent = event.offsetX / progressbar.offsetWidth;
-  this.currentAudio.currentTime = percent * this.currentAudio.duration;
-  barProgress.style.width = percent * 100 + "%";
-}
-
 function forward() {
   this.currentAudio.currentTime = this.currentAudio.currentTime + 5
 
@@ -486,17 +361,13 @@ function rewind() {
   this.currentAudio.currentTime = this.currentAudio.currentTime - 5
 }
 
-// function rewind_reset() {
-//   this.currentAudio.currentTime = this.currentAudio.currentTime - 600
-// }
-
 function next() {
   if (this.indexAudio < listAudio.length - 1) {
     var oldIndex = this.indexAudio
     this.indexAudio++;
     updateStylePlaylist(oldIndex, this.indexAudio)
     this.loadNewTrack(this.indexAudio);
- 
+
   }
 }
 
@@ -560,12 +431,12 @@ function getRandomInt(max) {
 
 }
 
-// console.log(getRandomInt(randomNombre));
-
 function randomSong() {
   let randomNombre = getRandomInt(listAudio.length)
   indexAudio = randomNombre;
   loadNewTrack(indexAudio);
+  console.log(indexAudio);
+
   this.loadNewTrack(this.indexAudio);
 
 }
@@ -598,22 +469,18 @@ playe_album.addEventListener("click", (e) => {
   list_recharge(".chariot", "C_chariot");
 });
 
-
 let reset = document.querySelector(".reset_playe_audio");
 reset.addEventListener("click", (e) => {
   soundIcon();
   document.querySelector(".custom-slider-son").value = 0;
   document.querySelector('.btn_suivante').style.display = 'block';
   document.querySelector('.btn_suivante_vert').style.display = 'none';
-  
+
   document.querySelector('.btn_precedente').style.display = 'block';
   document.querySelector('.btn_precedente_vert').style.display = 'none';
- let message= document.querySelector(".con_titles_en_lecture").innerHTML = "Please refresh the page to re-create your Playlist, <br> <br> See You Soon ! ! ";
- message.style ="text-color:black";
+  let message = document.querySelector(".con_titles_en_lecture").innerHTML = "Please refresh the page to re-create your Playlist, <br> <br> See You Soon ! ! ";
+  message.style = "text-color:black";
   let vider = document.querySelector(".con_titles_en_lecture");
   vider.style = 'background-color:#D2C5F9; padding-top:100px; padding-left:25px; padding-right:25px';
   replay();
 });
-
-
-
