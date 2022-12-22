@@ -1,3 +1,5 @@
+@import url("https://fonts.cdnfonts.com/css/courgette");
+@import url("https://fonts.cdnfonts.com/css/inter");
 /* import */
 * {
     margin: 0;
@@ -5,9 +7,6 @@
     box-sizing: border-box;
 }
 
-@import url("https://fonts.cdnfonts.com/css/courgette");
-@import url("https://fonts.cdnfonts.com/css/montserrat");
-@import url("https://fonts.cdnfonts.com/css/inter");
 
 /* reset CSS */
 html,
@@ -182,6 +181,7 @@ p {
 }
 
 .container_1 {
+    position: relative;
     width: 720px;
     height: 452px;
     background-color: var(--primary-color);
@@ -189,6 +189,11 @@ p {
     box-shadow: 10px 10px 5px 5px rgba(0, 0, 0, 0.25);
     padding-top: 28px;
 
+}
+.validate_W3C{
+    position: absolute;
+    margin-top: 600px;
+    margin-right: 1000px;
 }
 
 .btn_fermer {
@@ -349,7 +354,7 @@ p {
 
 .chariot {
     width: 40px;
-    height: 32.32;
+    height: 32.32px;
     margin-top: 28px;
 }
 
@@ -705,9 +710,11 @@ p {
 }
 
 #btn-faws-back,
+#btn-faws-back2,
 #btn-faws-rewind,
 #btn-faws-play-pause,
 #btn-faws-forward,
+#btn-faws-forward2,
 #btn-faws-next {
     display: flex;
     justify-content: center;
