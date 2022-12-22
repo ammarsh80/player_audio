@@ -6,20 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/style.css">
-    <link href="https://fonts.cdnfonts.com/css/courgette" rel="stylesheet" />
-    <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet" />
-    <link href="https://fonts.cdnfonts.com/css/montserrat" rel="stylesheet" />
-    <title>My Audio Player</title>
+    <link href="https://fonts.cdnfonts.com/css/courgette" rel="stylesheet" >
+    <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet" >
+    <link href="https://fonts.cdnfonts.com/css/montserrat" rel="stylesheet" >
+    <title>Audio Player _ Ammar</title>
 </head>
 
 <body>
+
+    <audio id="myAudio">
+        <!-- <source src="audio.ogg" type="audio/ogg"> -->
+        <source id="source-audio" src="audio.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
     <main>
         <div class="container_1">
-            <input type="button" class="btn_fermer" value="X">
+            <!-- <input type="button" class="btn_fermer" value="X"> -->
             <div class="container_2">
                 <div class="cont_my_playlist">
-                    <p>My playlist</p>
+
+                    <p id="library-link">My playlist</p>
                     <div class="container_title">
+
                         <div class="con_img_title">
                             <img src="./assets/img/Capture1.PNG" alt="" class="img_title">
                             <img src="./assets/img/Capture2.PNG" alt="" class="img_title">
@@ -27,13 +35,10 @@
                             <img src="./assets/img/Capture4.PNG" alt="" class="img_title">
                             <img src="./assets/img/Capture5.PNG" alt="" class="img_title">
                         </div>
-                        <div class="con_bouton_title">
-                            <img src="./assets/img/play-circle.png" alt="" class="bouton_title">
-                            <img src="./assets/img/play-circle.png" alt="" class="bouton_title">
-                            <img src="./assets/img/play-circle.png" alt="" class="bouton_title">
-                            <img src="./assets/img/play-circle.png" alt="" class="bouton_title">
-                            <img src="./assets/img/play-circle.png" alt="" class="bouton_title">
+                       
+                        <div class="con_titles_en_lecture">
                         </div>
+
                     </div>
                 </div>
                 <div class="cont_my_album">
@@ -41,63 +46,143 @@
                     <div class="container_album">
                         <div class="cadre_stromae">
                             <img src="./assets/img/skip-previous-vert.png" alt="bouton écouter la musique précedente"
-                                class="btn_vert_Stromae">
+                                class="btn_vert_Stromae_befor">
                             <img src="./assets/img/play-circle-vert.png" alt="bouton démarer la musique"
                                 class="btn_vert_Stromae_playe">
                             <img src="./assets/img/skip-next-vert.png" alt="bouton écouter la musique précedente"
-                                class="btn_vert_Stromae">
+                                class="btn_vert_Stromae_after">
                         </div>
 
                         <p class="multitude">Stromae _ Multitude</p>
-                        <img src="./assets/img/chariot.png" alt="cadie pour achat" class="chariot">
+                        <a href="index.html" title="Purchase it to listen your favorite artist!">
+
+                            <img src="./assets/img/chariot.png" alt="cadie pour achat" class="chariot">
+                        </a>
+                        <a href="index.html" title="Go to the purchase page">
+                            <img src="./assets/img/chariot_grand.png" alt="cadie pour achat" class="chariot_grand">
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="time_avance">
                 <div class="time">
                     <p>0:0</p>
-                    <p>3:45</p>
+                    <p>0:0</p>
                 </div>
             </div>
-            <div class="barre_point">
+            <div class="player">
+                <input type="range" max="100" step="1" class="custom-slider-avance" >
 
-                <div class="point_avance"></div>
-                <div class="barre_avance"></div>
             </div>
+            <audio src="./assets/img/Nettson-Mood.mp3" class="ammar"></audio>
+
             <div class="footer">
-                <div class="con_boutons">
-                    <img src="./assets/img/reset.png" alt="réinitialiser la musique" class="btn_reset">
-                    <img src="./assets/img/previous-title-dark.png" alt="écouter la musique précedente"
-                        class="btn_recedente">
-                    <img src="./assets/img/skip-previous.png" alt="revenire en arrière la musique" class="btn_recule">
-                    <img src="./assets/img/play-arrow-vert.png" alt="démarer la musique" class="btn_play">
-                    <img src="./assets/img/skip-next.png" alt="suater quelques seconde de la musique en cours"
-                        class="btn_avance">
-                    <img src="./assets/img/next-title-dark.png" alt="écouter la musique suivante" class="btn_suivante">
-                    <img src="./assets/img/random.png" alt="liste de musique aléatoire" class="btn_aléatoire">
-                </div>
-                <div class="son_stop">
-                    <img src="./assets/img/sound-off.png" alt="son coupé" class="sound_off">
-                    <div class="barre_sound">
 
-                        <div class="point_son"></div>
-                        <div class="barre_son"></div>
+                <!--Début en diplay:non pour le moment -->
+                <div class="titre_en_lecture">
+                    <img src="./assets/img/Capture1.PNG" alt="nature" class="img_en_lecture">
+                    <div class="infos-ctn">
+                        <div class="timer">00:00</div>
+                        <div class="title"></div>
+                        <div class="duration">00:00</div>
                     </div>
-                    <img src="./assets/img/stop-circle.png" alt="réinitialiser playe audio" class="reset_playe_audio">
+                </div>
+                <!--Début en diplay:non pour le moment -->
+
+                <div class="btn-ctn">
+                    <div class="btn-action first-btn" onclick="replay()">
+                        <div id="btn-faws-back">
+                            <img src="./assets/img/reset.png" alt="écouter la musique précedente" class="btn_replay">
+                            <i class='fas fa-step-backward boutonControl'></i>
+                        </div>
+                    </div>
+                    <div class="btn-action first-btn" onclick="previous()">
+                        <div id="btn-faws-back2">
+                            <img src="./assets/img/previous-title-dark.png" alt="écouter la musique précedente"
+                                class="btn_precedente">
+                            <img src="./assets/img/previous-title.png" alt="écouter la musique précedente"
+                                class="btn_precedente_vert" style="display: none;">
+                            <i class='fas fa-step-backward boutonControl'></i>
+                        </div>
+                    </div>
+                    <div class="btn-action" onclick="rewind()">
+                        <div id="btn-faws-rewind">
+                            <img src="./assets/img/skip-previous.png" alt="revenire en arrière la musique"
+                                class="btn_recule">
+
+                            <i class='fas fa-backward'></i>
+                        </div>
+                    </div>
+                    <div class="btn-action" onclick="toggleAudio()">
+                        <div id="btn-faws-play-pause">
+                            <img src="./assets/img/play-arrow-vert.png" alt="démarer la musique" id="icon-play">
+                            <img src="./assets/img/sharp-pause-vert.png" alt="démarer la musique" id="icon-pause">
+
+                        </div>
+                    </div>
+                    <div class="btn-play" onclick="forward()">
+                        <div id="btn-faws-forward">
+                            <img src="./assets/img/skip-next.png" alt="suater quelques seconde de la musique en cours"
+                                class="btn_avance">
+
+                            <i class='fas fa-forward'></i>
+                        </div>
+                    </div>
+                    <div class="btn-action" onclick="next()">
+                        <div id="btn-faws-next">
+                            <img src="./assets/img/next-title-dark.png" alt="écouter la musique suivante"
+                                class="btn_suivante" style="display: block;">
+                            <img src="./assets/img/next-title.png" alt="écouter la musique suivante"
+                                class="btn_suivante_vert" style="display: none;">
+
+                            <i class='fas fa-step-forward'></i>
+                        </div>
+
+                    </div>
+                    <div class="btn-play" onclick="randomSong()">
+                        <div id="btn-faws-forward2">
+                            <img src="./assets/img/random.png" alt="suater quelques seconde de la musique en cours"
+                                class="btn_aleatoire">
+                            <i class='fas fa-forward'></i>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="son_stop" id="toggleMute">
+                    <div class="soundIcon">
+                        <a href="index.html" onclick="return false"  title="Mute">
+                            <img src="./assets/img/sound-off.png" alt="son coupé" class="sound_off"
+                                onclick="toggleMute()">
+                            <img src="./assets/img/sound-low-2.png" alt="son moyen" class="sound_low"
+                                onclick="toggleMute()">
+                            <img src="./assets/img/sound-high-2.png" alt="son haut" class="sound_hight"
+                                onclick="toggleMute()">
+                        </a>
+                    </div>
+
+                    <div class="barre_sound sound-control">
+                        <div class="iconSonBarre">
+                        </div>
+                        <input type="range" max="100" step="1" class="custom-slider-son" value="0" >
+                    </div>
+                    <a href="index.html" onclick="return false" title="Reset player audio">
+                        <img src="./assets/img/stop-circle.png" alt="réinitialiser playe audio"
+                            class="reset_playe_audio">
+                    </a>
+
                 </div>
             </div>
-            <!-- <audio controls src="./assets/img/Kendji-Girac-Lecole-de-la-vie.mp3"></audio>
-            <audio controls src="./assets/img/Celine-Dion-all-by-myself.mp3"></audio> -->
         </div>
-        <!-- <audio id="myAudio" src="sample.mp3"></audio>
-        <button onclick="playAudio()" type="button">Play Audio</button>
-        <button onclick="pauseAudio()" type="button">Pause Audio</button> -->
-
-        <!--L’insertion d’un fichier audio se réalise très simplement par la balise :-->
-        <!-- <audio src=”fichier_son”></audio> -->
-
+                <p class="validate_W3C">
+                <a href="http://jigsaw.w3.org/css-validator/check/referer">
+                    <img style="border:0;width:88px;height:31px"
+                        src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+                        alt="CSS Valide !" />
+                    </a>
+                </p>
+                  
     </main>
+    <script src="./assets/main.js"></script>
 </body>
-<script src="main.js"></script>
 
 </html>

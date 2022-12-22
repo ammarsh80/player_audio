@@ -1,15 +1,12 @@
+@import url("https://fonts.cdnfonts.com/css/courgette");
+@import url("https://fonts.cdnfonts.com/css/inter");
 /* import */
-
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-@import url("https://fonts.cdnfonts.com/css/courgette");
-@import url("https://fonts.cdnfonts.com/css/montserrat");
-@import url("https://fonts.cdnfonts.com/css/inter");
 
 /* reset CSS */
 html,
@@ -151,7 +148,6 @@ a {
 /* fin reset CSS */
 
 /* *************************************************************************************************************************** */
-
 /* start Variables */
 
 :root {
@@ -168,7 +164,6 @@ a {
 }
 
 /* end Variables / Import */
-
 /* *************************************************************************************************************************** */
 
 /* start Project playe_audio */
@@ -186,12 +181,19 @@ p {
 }
 
 .container_1 {
+    position: relative;
     width: 720px;
     height: 452px;
     background-color: var(--primary-color);
     border-radius: 15px;
     box-shadow: 10px 10px 5px 5px rgba(0, 0, 0, 0.25);
+    padding-top: 28px;
 
+}
+.validate_W3C{
+    position: absolute;
+    margin-top: 600px;
+    margin-right: 1000px;
 }
 
 .btn_fermer {
@@ -204,6 +206,7 @@ p {
     border: 3px solid var(--white);
     font-size: 1em;
     font-weight: bold;
+    z-index: -10;
 }
 
 .container_2 {
@@ -218,7 +221,6 @@ p {
     padding-left: 15px;
     gap: 40px;
 }
-
 .cont_my_playlist,
 .cont_my_album {
     text-align: center;
@@ -272,6 +274,43 @@ p {
     border-radius: 5px;
 }
 
+.con_titles_en_lecture {
+    display: flex;
+    background-color: var(--vert);
+    margin-top: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    margin-bottom: 50px;
+    color: var(--primary-dark);
+    text-align: center;
+    padding-top: 100px;
+    scrollbar-width: none;
+}
+
+.con_titles_en_lecture {
+    display: none;
+}
+
+.C_con_titles_en_lecture {
+    width: 270px;
+    height: 233px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: 21px;
+    margin-top: 5px;
+    padding: 0px 0px;
+    margin-left: 10px;
+    display: block;
+    font-family: inter, Arial, Helvetica, sans-serif;
+    margin-left: 30px;
+
+
+}
+
+
 .container_album {
     width: 224px;
     height: 243px;
@@ -293,7 +332,6 @@ p {
     border-radius: 5px;
     margin-top: 10px;
     background-image: url(../assets/img/Stromae.jpg);
-    background-color: orange;
     background-size: cover;
     margin-top: 10px;
     margin-left: 20px;
@@ -303,7 +341,8 @@ p {
 
 }
 
-.btn_vert_Stromae {
+.btn_vert_Stromae_befor,
+.btn_vert_Stromae_after {
     width: 34px;
     height: 34px;
 }
@@ -315,9 +354,31 @@ p {
 
 .chariot {
     width: 40px;
-    height: 32.32;
+    height: 32.32px;
     margin-top: 28px;
 }
+
+.C_chariot {
+    position: absolute;
+    display: none;
+}
+
+.chariot_grand {
+    width: 80px;
+    height: 65px;
+    position: absolute;
+    display: none;
+}
+
+.C_chariot_grand {
+    width: 80px;
+    height: 65px;
+    display: block;
+    position: relative;
+    margin-left: 73px;
+    margin-top: -5px;
+}
+
 
 .time_avance {
     margin-top: 10px;
@@ -333,34 +394,22 @@ p {
 
 .time p {
     font-size: 0.8em;
+    margin-bottom: -3px;
 }
 
-.barre_point {
-    position: relative;
-    width: 690px;
-    height: 13px;
-    display: flex;
-    margin-left: 15px;
-}
-
-.point_avance {
-    position: relative;
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-    background-color: var(--vert);
-    z-index: 10;
-}
-
-.barre_avance {
-    position: absolute;
+.player input {
     width: 690px;
     height: 5px;
+    margin-left: 15px;
+    margin-top: 0px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     border-radius: 3px;
-    background-color: var(--white);
-    margin-top: 4px;
-
+    outline: none;
 }
+
 
 .footer {
     width: 690px;
@@ -370,24 +419,39 @@ p {
     justify-content: flex-end;
     margin-left: 15px;
 }
-.con_boutons {
-    width: 284px;
+
+.titre_en_lecture {
+    width: 180px;
     height: 45px;
-    border-radius: 5px;
-    background-color: var(--primary-light);
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    padding-right: 5px;
-    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.25);
+    display: none;
+}
+
+.titre_en_lecture p {
+    margin-left: 10px;
+    font-size: 0.8em;
+    color: var(--white);
+}
+
+.img_en_lecture {
+    width: 37px;
+    height: 37px;
 }
 
 .btn_reset,
-.btn_recedente,
+.btn_precedente,
 .btn_suivante,
-.btn_aléatoire {
+.btn_aleatoire,
+.btn_suivante_vert,
+.btn_precedente_vert,
+.btn_replay {
     width: 30px;
     height: 30px;
+}
+
+.btn_aleatoire {
+    width: 25px;
+    height: 25px;
 }
 
 .btn_recule,
@@ -396,13 +460,23 @@ p {
     height: 35px;
 }
 
-.btn_play {
+#icon-pause {
+    display: none;
+    position: absolute;
+}
+
+#icon-play,
+#icon-pause {
     width: 40px;
     height: 40px;
 }
 
+.fa-pause {
+    display: block;
+    position: absolute;
+}
 
-.son_stop{
+.son_stop {
     position: relative;
     width: 200px;
     height: 45px;
@@ -411,12 +485,54 @@ p {
     align-items: center;
     margin-left: 3px;
 }
-.barre_sound{
+
+.iconSonBarre {
+    width: 200px;
+    height: 45px;
+    background-color: red;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.sound_low,
+.sound_hight {
+    position: absolute;
+    display: none;
+}
+
+.C_sound_show {
+    display: block;
+    position: relative;
+}
+
+.C_show {
+    position: absolute;
+    display: block;
+}
+
+.C_cache {
+    position: absolute;
+    display: none;
+}
+
+.C_sound_hidden {
+    display: block;
+    position: relative;
+}
+
+.C_sound_hidden_sound_off {
+    display: none;
+    position: absolute;
+}
+
+.barre_sound {
     width: 97.73px;
     height: 10px;
     position: relative;
 
 }
+
 .barre_son {
     position: relative;
     width: 97.73px;
@@ -430,6 +546,7 @@ p {
     position: relative;
     width: 34px;
     height: 34px;
+    /* z-index: -1; */
 }
 
 .point_son {
@@ -442,101 +559,407 @@ p {
     margin-bottom: 0px;
 }
 
+.sound-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.soundIcon {
+    width: 34px;
+    height: 34px;
+}
+
+.sound-control input {
+    width: 97.73px;
+    height: 3px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 3px;
+    outline: none;
+}
+
+
 .reset_playe_audio {
     width: 44px;
     height: 44px;
     margin-left: 18px;
 }
 
-/****************** Début_Calculatrice**********************************************************/
-/* body {
-    max-width: 100vw;
-    height: 100vh;
+#myProgress {
+    width: 420px;
+    background-color: #d9d9f2;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#myBar {
+    width: 0%;
+    height: 5px;
+    background-color: #ffc266;
+    border-radius: 10px;
+}
+
+.btn-action>div {
+    cursor: pointer;
+    /* padding-top: 10px; */
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+/* con_boutons */
+.btn-ctn {
+    width: 284px;
+    height: 45px;
+    border-radius: 5px;
+    background-color: var(--primary-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+    padding-left: 5px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+.infos-ctn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+/* Début en diplay:non pour le moment */
+/* .infos-ctn>div {
+    margin-bottom: 8px;
+    color: var(--white);
+    font-size: 0.6em;
+    text-align: left;
+    overflow: hidden;
+} */
+/* Fin en diplay:non pour le moment */
+.first-btn {
+    margin-left: 3px;
+}
+
+.duration {
+    margin-left: 10px;
+}
+
+.title {
+    margin-left: 10px;
+    width: 210px;
+    text-align: center;
+}
+
+.player-ctn {
+    border-radius: 15px;
+    width: 420px;
+    padding: 10px;
+    background-color: #373737;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.playlist-track-ctn {
+    display: flex;
+    background-color: var(--primary-color);
+    margin-top: 3px;
+    margin-bottom: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid var(--white);
+}
+
+.playlist-track-ctn>div {
+    height: 25px;
+    margin: 8.5px;
+    color: var(--white);
+    overflow: unset;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.playlist-info-track {
+    width: 80%;
+}
+
+.playlist-info-track,
+.playlist-duration {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    color: #e9cc95;
+    font-size: 0.7em;
+    pointer-events: none;
+}
+
+.playlist-ctn {
+    padding-bottom: 20px;
+}
+
+.active-track {
+    background: var(--primary-light);
+    color: var(--vert) !important;
+    font-weight: bold;
+
+}
+
+#btn-faws-back,
+#btn-faws-back2,
+#btn-faws-rewind,
+#btn-faws-play-pause,
+#btn-faws-forward,
+#btn-faws-forward2,
+#btn-faws-next {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: sans-serif;
-    background-image: linear-gradient(to top #a18cd1 0%, #fbc2eb 100%);
-
+    align-items: center;
 }
 
-.calculatrice {
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 3px 10px 2px black;
-    border: ridge 2px rgb(227, 22, 213);
+.active-track>.playlist-info-track,
+.active-track>.playlist-duration,
+.active-track>.playlist-btn-play {
+    color: var(--vert) !important;
 }
 
-.ecran {
-    width: 224px;
-    height: 70px;
-    background-color: rgb(208, 208, 240);
-    margin-bottom: 10px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    padding: 5px;
-    font-size: 25px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    color: rgb(227, 22, 213);
-    font-size: 30px;
-    font-weight: bold;
-    overflow: hidden;
+
+.playlist-btn-play {
+    pointer-events: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
-.touches {
-    display: grid;
-    grid-template-columns: repeat(4, 50px);
-    grid-template-rows: repeat(6, 50px);
-    gap: 8px;
-}
 
-button {
-    border: none;
+
+
+/* Réinitialiser les input de progression */
+
+/* partie commune */
+input[type=range].custom-slider {
+    padding: 0;                   /* nécessaire pour IE */
+    font: inherit;                /* même rendu suivant font document */
     outline: none;
-    border-radius: 5px;
-    background-color: #f7f7f7;
-    box-shadow: 0 3px #a8a8a8;
-    font-size: 22px;
-    font-weight: bold;
-    border: solid 1px rgb(227, 22, 213);
-    color: black;
+    color: #069;                  /* sert pour couleur de référence, via currentColor, pour le curseur */
+    opacity: .8;
+    background: #CCC;             /* sert pour couleur de fond de la zone de déplacement */
+    box-sizing: border-box;       /* même modèle de boîte pour tous */
+    transition: opacity .2s;
+    cursor: pointer;
+  }
+
+/* Pour Chrome */
+  /* la zone de déplacement */
+input[type=range].custom-slider::-webkit-slider-runnable-track {
+    height: 100%;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;  /* supprimé définie sur l'input */
+  }
+  /* le curseur */
+  input[type=range].custom-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;       /* également nécessaire sur le curseur */
+    width: 1em;
+    height: inherit;                /* s'adapte à la hauteur de l'input */
+    border: none;
+    border-radius: 0;               /* pris en compte sur Webkit et Edge */
+    background: currentColor;       /* pris en compte sur Webkit only */
+  }
+
+/* Firefox */
+/* la zone de déplacement */
+input[type=range].custom-slider::-moz-range-track {
+    height: 100%;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;  /* supprimé définie sur l'input */
+  }
+  /* le curseur */
+  input[type=range].custom-slider::-moz-range-thumb {
+    width: 1em;
+    height: inherit;                /* s'adapte à la hauteur de l'input */
+    border: none;                   /* supprimer la bordure */
+    border-radius: 0;               /* supprimer le rayon */
+    background: currentColor;
+  }
+  /* barre progression avant */
+  input[type=range].custom-slider::-moz-range-progress {
+    height: 0;
+    background: transparent;        /* supprime barre progression avant */
+  }
+
+
+  /* IE, Egde */
+/* la zone de déplacement */
+input[type=range].custom-slider::-ms-track {
+    height: 100%;
+    border: none;
+    border-radius: 0;
+    color: transparent;             /* supprime les graduations pour IE */
+    background-color: transparent;  /* supprimé définie sur l'input */
+  }
+  /* le curseur */
+  input[type=range].custom-slider::-ms-thumb {
+    width: 1em;
+    height: inherit;                /* s'adapte à la hauteur de l'input */
+    border: none;                   /* supprimer la bordure */
+    border-radius: 0;               /* supprimer le rayon */
+    background: currentColor;
+  }
+  /* la tooltip de la valeur */
+  input[type=range].custom-slider::-ms-tooltip {
+    display: none;                  /* supprime l'affichage de la valeur au survol */
+  }
+  /* barre progression avant */
+  input[type=range].custom-slider::-ms-fill-lower {
+    background: transparent;
+  }
+  /* barre progression après */
+  input[type=range].custom-slider::-ms-fill-upper {
+    background: transparent;
+  }
+
+
+
+
+/* Pour mon audio player *********************************************************************************/
+/* Progression de la musique */
+/* la zone de déplacement */
+input[type=range].custom-slider-avance::-moz-range-track {
+    height: 5px;
+    border: none;
+    border-radius: 3px;
+    background-color: var(--white);
+    /*supprime barre progression avant*/
+}
+
+/* le curseur */
+input[type=range].custom-slider-avance::-moz-range-thumb {
+
+    width: 13px;
+    height: 13px;
+    border: none;
+    /* s'adapte à la hauteur de l'input */
+    border-radius: 50%;
+    /* supprimer le rayon */
+    background: var(--vert);
+}
+
+/* barre progression avant */
+input[type=range].custom-slider-avance::-moz-range-progress {
+    height: 5px;
+    border-radius: 3px;
+
+    background: var(--vert);
+    /* supprime barre progression avant */
+}
+
+/* Progression de son */
+
+/* la zone de déplacement */
+input[type=range].custom-slider-son::-moz-range-track {
+    height: 3px;
+    border: none;
+    border-radius: 0;
+    background-color: var(--white);
+    /*supprime barre progression avant*/
+}
+
+/* le curseur */
+input[type=range].custom-slider-son::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    border: none;
+    /* s'adapte à la hauteur de l'input */
+    border-radius: 50%;
+    /* supprimer le rayon */
+    background: var(--orange);
+}
+
+/* barre progression avant */
+input[type=range].custom-slider-son::-moz-range-progress {
+    height: 3px;
+    background: var(--orange);
+    /* supprime barre progression avant */
+}
+
+/* Effet hover */
+
+input[type=range].custom-slider-son::-moz-range-thumb:hover,
+input[type=range].custom-slider-avance::-moz-range-thumb:hover {
+    transform: scale(1.5, 1.5);
+
+    opacity: 80%;
 
 }
 
-
-button:active {
-    box-shadow: 0 1px #a8a8a8;
-    transform: translateY(1px);
+p:hover {
+    color: rosybrown;
 }
 
-button[data-key="8"] {
-    background-color: #ff9900;
-    font-size: bold;
-    color: white;
-    font-size: 17px;
+.btn-ctn img:hover {
+    opacity: 40%;
+    transform: scale(1.5, 1.3);
 }
 
-button[data-key="13"] {
-    grid-column: span 2;
-    background-color: #36e700;
-    font-weight: bold;
-    color: white;
-    font-size: 35px;
-
+.sound_off:hover,
+.sound_low:hover,
+.sound_hight:hover {
+    opacity: 50%;
+    transform: scale(1.3, 1.3);
 
 }
 
-button[data-key="65"],
-button[data-key="66"],
-button[data-key="67"],
-button[data-key="68"] {
-    font-size: bold;
-    font-size: 17px;
-} */
-/****************** Fin_Calculatrice**********************************************************/
+.chariot:hover {
+    opacity: 70%;
+    transform: scale(2, 2);
+    margin-top: 11px;
+
+}
+
+.chariot_grand:hover {
+    opacity: 80%;
+}
+
+.cadre_stromae:hover {
+    opacity: 80%;
+    transform: scale(1.2, 1.1);
+
+}
+
+.cadre_stromae img:hover {
+    opacity: 80%;
+    transform: scale(1.3, 1.3);
+
+}
+
+#ptc-0:hover,
+#ptc-1:hover,
+#ptc-2:hover,
+#ptc-3:hover,
+#ptc-4:hover,
+#ptc-5:hover,
+#ptc-6:hover,
+#ptc-7:hover,
+#ptc-8:hover {
+    opacity: 90%;
+    transform: scale(1, 1.2);
+}
+
+.reset_playe_audio:hover {
+    opacity: 80%;
+    transform: scale(1.5, 1.5);
+}
+
+.con_img_title img:hover {
+    opacity: 80%;
+    transform: scale(1.3, 1.3);
+
+}
+
+/*  *************************************************/
