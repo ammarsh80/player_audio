@@ -232,18 +232,32 @@ function stratSon() {
 
 }
 
-function loadNewTrack(index) {
-  let player = document.querySelector('#source-audio');
-  player.src = listAudio[index].file;
-  document.querySelector('.title').innerHTML = listAudio[index].name;
-  currentAudio = document.getElementById("myAudio");
-  currentAudio.load();
-  toggleAudio();
-  updateStylePlaylist(indexAudio, index);
-  indexAudio = index;
+// function loadNewTrack(index) {
+//   let player = document.querySelector('#source-audio');
+//   player.src = listAudio[index].file;
+//   document.querySelector('.title').innerHTML = listAudio[index].name;
+//   currentAudio = document.getElementById("myAudio");
+//   currentAudio.load();
+//   toggleAudio();
+//   updateStylePlaylist(indexAudio, index);
+//   indexAudio = index;
+//   stratSon();
+
+// }
+
+function loadNewTrack(index){
+  var player = document.querySelector('#source-audio')
+  player.src = listAudio[index].file
+  document.querySelector('.title').innerHTML = listAudio[index].name
+  this.currentAudio = document.getElementById("myAudio");
+  this.currentAudio.load()
+  this.toggleAudio()
+  this.updateStylePlaylist(this.indexAudio,index)
+  this.indexAudio = index;
   stratSon();
 
 }
+
 
 let playListItems = document.querySelectorAll(".playlist-track-ctn");
 
@@ -401,12 +415,17 @@ let next_album = document.querySelector(".btn_vert_Stromae_after");
 next_album.addEventListener("click", (e) => {
   let cadre_stromae = document.querySelector(".cadre_stromae")
   cadre_stromae.style.backgroundImage = "url(./assets/img/Soprano.jpg)";
+  document.querySelector(".multitude").innerHTML = "Soprano _ Chasseur d'Étoiles";
+  document.querySelector(".multitude").style = "font-size : 0.9em";
+
 });
 
 let befor_album = document.querySelector(".btn_vert_Stromae_befor");
 befor_album.addEventListener("click", (e) => {
   let cadre_stromae = document.querySelector(".cadre_stromae")
   cadre_stromae.style.backgroundImage = "url(./assets/img/Wejdene.jpg)";
+  document.querySelector(".multitude").innerHTML = "Wejdene _ Glow Up";
+
 });
 
 let playe_album = document.querySelector(".btn_vert_Stromae_playe");
@@ -455,9 +474,13 @@ currentAudio.addEventListener("ended", (e) => {
     replay();
     console.log("countreplay" + countreplay);
   }
-    else { if (indexAudio==listAudio.length){
-      indexAudio=0;
-    }
+  else if (indexAudio == listAudio.length-1) {
+    indexAudio = 0;
+   console.log(indexAudio);
+   loadNewTrack(indexAudio);
+  }
+  else {
     next();
   }
-})
+}
+)
