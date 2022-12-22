@@ -1,4 +1,3 @@
-
 /* import */
 * {
     margin: 0;
@@ -279,14 +278,20 @@ p {
     font-size: 1em;
     color: var(--white);
     margin-bottom: 27px; */
-  
+
     display: flex;
     background-color: var(--vert);
     margin-top: 3px;
     border-radius: 5px;
     cursor: pointer;
-    overflow: scroll;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
     margin-bottom: 50px;
+    color: var(--red);
+    text-align: center;
+    padding-top: 100px;
+    /* scrollbar-color: var(--primary-color) var(--vert); */
+    scrollbar-width: none;
 }
 
 .con_titles_en_lecture {
@@ -329,7 +334,6 @@ p {
     border-radius: 5px;
     margin-top: 10px;
     background-image: url(../assets/img/Stromae.jpg);
-    background-color: orange;
     background-size: cover;
     margin-top: 10px;
     margin-left: 20px;
@@ -339,7 +343,8 @@ p {
 
 }
 
-.btn_vert_Stromae {
+.btn_vert_Stromae_befor,
+.btn_vert_Stromae_after {
     width: 34px;
     height: 34px;
 }
@@ -354,6 +359,28 @@ p {
     height: 32.32;
     margin-top: 28px;
 }
+
+.C_chariot {
+    position: absolute;
+    display: none;
+}
+
+.chariot_grand {
+    width: 80px;
+    height: 65px;
+    position: absolute;
+    display: none;
+}
+
+.C_chariot_grand {
+    width: 80px;
+    height: 65px;
+    display: block;
+    position: relative;
+    margin-left: 73px;
+    margin-top: -5px;
+}
+
 
 .time_avance {
     margin-top: 10px;
@@ -384,6 +411,7 @@ p {
     border-radius: 3px;
     outline: none;
 }
+
 /* la zone de déplacement */
 input[type=range].custom-slider-avance::-moz-range-track {
     height: 5px;
@@ -413,6 +441,7 @@ input[type=range].custom-slider-avance::-moz-range-progress {
     background: var(--vert);
     /* supprime barre progression avant */
 }
+
 .footer {
     width: 690px;
     height: 45px;
@@ -480,7 +509,8 @@ input[type=range].custom-slider-avance::-moz-range-progress {
     width: 40px;
     height: 40px;
 }
-.fa-pause{
+
+.fa-pause {
     display: block;
     position: absolute;
 }
@@ -500,7 +530,7 @@ input[type=range].custom-slider-avance::-moz-range-progress {
     margin-left: 3px;
 }
 
-.iconSonBarre{
+.iconSonBarre {
     width: 200px;
     height: 45px;
     background-color: red;
@@ -508,6 +538,7 @@ input[type=range].custom-slider-avance::-moz-range-progress {
     justify-content: space-evenly;
     align-items: center;
 }
+
 .sound_low,
 .sound_hight {
     position: absolute;
@@ -568,10 +599,12 @@ input[type=range].custom-slider-avance::-moz-range-progress {
     align-items: center;
     justify-content: space-around;
 }
-.soundIcon{
+
+.soundIcon {
     width: 34px;
     height: 34px;
 }
+
 .sound-control input {
     width: 97.73px;
     height: 3px;
@@ -715,43 +748,44 @@ button[data-key="68"] {
     font-size: 17px;
 } */
 /****************** Fin_Calculatrice**********************************************************/
-body{
+body {
     background-color: #2d2d2d;
     color: #ffc266;
     font-family: 'Roboto', sans-serif;
-  }
+}
+
 #myProgress {
     width: 420px;
-     background-color: #d9d9f2; 
+    background-color: #d9d9f2;
     cursor: pointer;
     border-radius: 10px;
-  }
-  
-  #myBar {
+}
+
+#myBar {
     width: 0%;
     height: 5px;
     background-color: #ffc266;
     border-radius: 10px;
-  }
-  
-  .logo {
+}
+
+.logo {
     fill: red;
-  }
-  
-  .btn-action > div{
+}
+
+.btn-action>div {
     cursor: pointer;
     /* padding-top: 10px; */
     width: 30px;
     height: 30px;
-display: flex;
-justify-content: center;
-align-self: center;
-  }
-  
-  /* con_boutons */
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+/* con_boutons */
 
 
-  .btn-ctn {
+.btn-ctn {
     width: 284px;
     height: 45px;
     border-radius: 5px;
@@ -765,15 +799,15 @@ align-self: center;
 }
 
 
-.infos-ctn{
+.infos-ctn {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-  }
- 
-  
-  /* .btn-ctn > div {
+}
+
+
+/* .btn-ctn > div {
     width: 30px;
     height: 30px;
    margin-top: 18px;
@@ -784,48 +818,48 @@ align-self: center;
    align-content: center;
   } */
 
-  /* .btn-ctn > div > img{
+/* .btn-ctn > div > img{
 align-items: center;
 align-self: center;
 
 } */
-  /* .btn-ctn div > i{
+/* .btn-ctn div > i{
     width: 40px;
     height: 40px;
     background-color: orange;
   } */
-  .infos-ctn > div {
-   margin-bottom: 8px;
-   color: var(--white);
-   font-size: 0.6em;
-   text-align: left;
-   /* overflow: hidden; */
-  }
-  
-  .first-btn{
+.infos-ctn>div {
+    margin-bottom: 8px;
+    color: var(--white);
+    font-size: 0.6em;
+    text-align: left;
+    /* overflow: hidden; */
+}
+
+.first-btn {
     margin-left: 3px;
-  }
-  
-  .duration{
+}
+
+.duration {
     margin-left: 10px;
-  }
-  
-  .title{
+}
+
+.title {
     margin-left: 10px;
     width: 210px;
     text-align: center;
-  }
-  
-  .player-ctn{
+}
+
+.player-ctn {
     border-radius: 15px;
     width: 420px;
     padding: 10px;
     background-color: #373737;
-    margin:auto;
+    margin: auto;
     margin-top: 100px;
-  }
-  
-  .playlist-track-ctn{
+}
+
+.playlist-track-ctn {
     display: flex;
     background-color: var(--primary-color);
     margin-top: 3px;
@@ -835,54 +869,70 @@ align-self: center;
     border: 1px solid var(--white);
 }
 
-.playlist-track-ctn > div{
+.playlist-track-ctn>div {
     height: 25px;
-    margin:8.5px;
+    margin: 8.5px;
     color: var(--white);
     overflow: unset;
     box-sizing: border-box;
     text-align: left;
-  }
-  .playlist-info-track{
+}
+
+.playlist-info-track {
     width: 80%;
-  }
-  .playlist-info-track,.playlist-duration{
+}
+
+.playlist-info-track,
+.playlist-duration {
     padding-top: 7px;
     padding-bottom: 7px;
     color: #e9cc95;
     font-size: 0.7em;
     pointer-events: none;
-  }
-  .playlist-ctn{
-     padding-bottom: 20px;
-  }
-  .active-track{
+}
+
+.playlist-ctn {
+    padding-bottom: 20px;
+}
+
+.active-track {
     background: var(--primary-light);
     color: var(--vert) !important;
     font-weight: bold;
-    
-  }
-  #btn-faws-back,
-  #btn-faws-rewind,
-  #btn-faws-play-pause,
-  #btn-faws-forward,
-  #btn-faws-next{
+
+}
+
+#btn-faws-back,
+#btn-faws-rewind,
+#btn-faws-play-pause,
+#btn-faws-forward,
+#btn-faws-next {
     display: flex;
     justify-content: center;
     align-items: center;
     align-items: center;
-  }
-  .active-track > .playlist-info-track,.active-track >.playlist-duration,.active-track > .playlist-btn-play{
-    color:var(--vert) !important;
-  }
-  
-  
-  .playlist-btn-play{
+}
+
+.active-track>.playlist-info-track,
+.active-track>.playlist-duration,
+.active-track>.playlist-btn-play {
+    color: var(--vert) !important;
+}
+
+
+.playlist-btn-play {
     pointer-events: none;
     padding-top: 5px;
     padding-bottom: 5px;
-  }
-  .fas{
+}
+
+.fas {
     color: #ffc266;
     font-size: 20px;
-  }
+}
+
+
+
+
+
+/*  *************************************************/

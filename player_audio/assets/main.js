@@ -635,7 +635,7 @@ function soundIcon() {
  * @returns (m:ss)
  */
 function timeFormat(time) {
-    return Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2);
+  return Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2);
 }
 
 const durationInput = document.querySelector(".player input");
@@ -644,17 +644,17 @@ const currentTime = document.querySelector(".time_avance p");
 const currentAudi = document.getElementById("myAudio");
 
 currentAudi.addEventListener("loadedmetadata", () => {
-    const endTime = document.querySelector(".time_avance p:last-child");
-    durationInput.value = currentAudi.currentTime;
-    durationInput.setAttribute("max", currentAudi.duration);
-    currentTime.innerText = `${timeFormat(currentAudi.currentTime)}`;
-    endTime.innerText = `${timeFormat(currentAudi.duration)}`;
+  const endTime = document.querySelector(".time_avance p:last-child");
+  durationInput.value = currentAudi.currentTime;
+  durationInput.setAttribute("max", currentAudi.duration);
+  currentTime.innerText = `${timeFormat(currentAudi.currentTime)}`;
+  endTime.innerText = `${timeFormat(currentAudi.duration)}`;
 });
 
 currentAudi.addEventListener("timeupdate", () => {
-    durationInput.value = currentAudi.currentTime;
-    currentTime.innerText = `${timeFormat(currentAudi.currentTime)}`;
-    document.querySelector(".time_avance p:last-child").style.left = `${(currentAudi.currentTime / currentAudi.duration) * 100}%`;
+  durationInput.value = currentAudi.currentTime;
+  currentTime.innerText = `${timeFormat(currentAudi.currentTime)}`;
+  document.querySelector(".time_avance p:last-child").style.left = `${(currentAudi.currentTime / currentAudi.duration) * 100}%`;
 });
 
 durationInput.addEventListener("change", () => {
@@ -734,7 +734,7 @@ let listAudio = [
     duration: "03:38"
   },
   {
-    name: "Kendji Girac - Le Feu",
+    name: "Vianney & Kendji Girac - Le Feu",
     file: "./assets/img/Vianney-Kendji-Girac-Le-feu.mp3",
     duration: "03:57"
   },
@@ -785,24 +785,24 @@ var indexAudio = 0;
 //     }
 // };
 function loadNewTrack(index) {
-  
-    document.querySelector(".custom-slider-son").value = 25;
-    soundIcon();
 
-    var player = document.querySelector('#source-audio');
-    player.src = listAudio[index].file;
-    document.querySelector('.title').innerHTML = listAudio[index].name;
-    this.currentAudio = document.getElementById("myAudio");
-    this.currentAudio.load();
-    this.toggleAudio();
-    this.updateStylePlaylist(this.indexAudio, index);
-    this.indexAudio = index;
-            playStatus = true;
+  document.querySelector(".custom-slider-son").value = 25;
+  soundIcon();
 
-    // let myindex = indexAudio;
-    // console.log(myindex);
- 
- 
+  var player = document.querySelector('#source-audio');
+  player.src = listAudio[index].file;
+  document.querySelector('.title').innerHTML = listAudio[index].name;
+  this.currentAudio = document.getElementById("myAudio");
+  this.currentAudio.load();
+  this.toggleAudio();
+  this.updateStylePlaylist(this.indexAudio, index);
+  this.indexAudio = index;
+  playStatus = true;
+
+  // let myindex = indexAudio;
+  // console.log(myindex);
+
+
 }
 var playListItems = document.querySelectorAll(".playlist-track-ctn");
 
@@ -840,13 +840,13 @@ var interval1;
 function toggleAudio() {
   document.querySelector(".custom-slider-son").value = 25;
   soundIcon();
-  if (this.currentAudio.paused)   {
+  if (this.currentAudio.paused) {
     document.querySelector('#icon-play').style.display = 'none';
     document.querySelector('#icon-pause').style.display = 'block';
     document.querySelector('#ptc-' + this.indexAudio).classList.add("active-track");
     this.playToPause(this.indexAudio)
     this.currentAudio.play();
-  } else   {
+  } else {
     document.querySelector('#icon-play').style.display = 'block';
     document.querySelector('#icon-pause').style.display = 'none';
     this.pauseToPlay(this.indexAudio)
@@ -919,6 +919,9 @@ function rewind() {
   this.currentAudio.currentTime = this.currentAudio.currentTime - 5
 }
 
+function rewind_reset() {
+  this.currentAudio.currentTime = this.currentAudio.currentTime - 600
+}
 
 function next() {
   if (this.indexAudio < listAudio.length - 1) {
@@ -963,7 +966,7 @@ function toggleMute() {
   var voloff = document.querySelector('.sound_off');
   var vollow = document.querySelector('.sound_low');
   var volhight = document.querySelector('.sound_hight');
-  if (this.currentAudio.muted == false)  {
+  if (this.currentAudio.muted == false) {
     this.currentAudio.muted = true;
     vollow.style.display = "none";
     volhight.style.display = "none";
@@ -1002,3 +1005,37 @@ function replay() {
   console.log(indexAudio);
   loadNewTrack(indexAudio);
 }
+
+
+let next_album = document.querySelector(".btn_vert_Stromae_after");
+next_album.addEventListener("click", (e) => {
+  let cadre_stromae = document.querySelector(".cadre_stromae")
+  cadre_stromae.style.backgroundImage = "url(./assets/img/Soprano.jpg)";
+});
+
+let befor_album = document.querySelector(".btn_vert_Stromae_befor");
+befor_album.addEventListener("click", (e) => {
+  let cadre_stromae = document.querySelector(".cadre_stromae")
+  cadre_stromae.style.backgroundImage = "url(./assets/img/Wejdene.jpg)";
+});
+
+let playe_album = document.querySelector(".btn_vert_Stromae_playe");
+playe_album.addEventListener("click", (e) => {
+  list_recharge(".chariot_grand", "C_chariot_grand");
+  list_recharge(".chariot", "C_chariot");
+});
+
+
+let reset = document.querySelector(".reset_playe_audio");
+reset.addEventListener("click", (e) => {
+  document.querySelector(".custom-slider-son").value = 0;
+  soundIcon();
+ let message= document.querySelector(".con_titles_en_lecture").innerHTML = "Veuillez recharger la page pour pouvoir créer votre Playlist";
+ message.style ="text-color:black";
+  let vider = document.querySelector(".con_titles_en_lecture");
+  vider.style = 'background-color:#61DE84';
+  replay();
+});
+
+
+
