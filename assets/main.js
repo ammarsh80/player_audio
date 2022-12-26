@@ -1,176 +1,7 @@
-// un message pour les anciens navigateurs qui ne prennent pas en charge cette balise.
-// <audio src=”fichier_son”>Votre navigateur ne supporte pas la balise audio</audio>
-
-// L’adressage du fichier audio suppose ici que celui-ci se trouve dans le même 
-// répertoire que le fichier HTML contenant la balise audio.
-
-
-// Les attributs de la balise <audio> sont :
-// src
-// Obligatoire. Définis l’adresse du fichier son.
-// Vous pouvez mettre autant de fichier source que nécessaire afin d'être certain que le navigateur de 
-// votre visiteur prendra en charge le format du fichier son.
-// autoplay
-//  Définit la lecture automatique du fichier audio dès que celui-ci sera disponible, soit au chargement de 
-// la page.
-// <audio src=”son.ogg” autoplay>
-// La notation XHTML de l’attribut autoplay="autoplay" est également acceptée.
-// loop
-// Spécifie que le fichier son sera joué en boucle. Ainsi, le morceau sonore est joué à nouveau lorsqu’il se 
-// termine.
-// <audio src=”son.ogg” loop>
-// La notation loop="loop" est aussi acceptée
-
-// preload
-// Indique au navigateur qu’il doit télécharger le fichier audio au chargement de la page de sorte qu’il soit 
-// disponible pour une lecture immédiate lors de la demande de l’utilisateur.
-// <audio src=”son.ogg” preload>
-// Cet attribut peut être précisé :
-// - preload="none" : pas de préchargement.
-// - preload="metadata" : préchargement des métadonnées (metadata) attachées au fichier.
-// - preload="auto" : préchargement automtique.
-// Cet attribut preload est ignoré si l’attribut autoplay est présent.
-
-/////////////////////////// à Garder
-
-/**
- * Donner une classe de style à une balise (Avec Toggle 0/1)
- * @param {*} selecteur nom de la .class/#id (attention aux . & #) de la balise cible
- * @param {*} styl classe de style voulu 
- */
-function list_recharge(selecteur, styl) {
-  document.querySelector(selecteur).classList.toggle(styl);
-};
-/**
- * 
- * Donner une classe de style à une balise
- * @param {*} selecteur nom de la .class/#id (attention aux . & #) de la balise cible 
- * @param {*} sty classe de style voulu 
- */
-function sound_charge(selecteur, sty) {
-  document.querySelector(selecteur).classList.add(sty);
-};
-
-/**
- * Enlever une classe de style 
- * @param {*} selecteur nom de la .class/#id (attention aux . & #) de la balise cible 
- * @param {*} sty classe de style voulu
- */
-function sound_remove(selecteur, sty) {
-  document.querySelector(selecteur).classList.remove(sty);
-};
-
-let recharg = document.querySelector("#library-link");
-recharg.addEventListener("click", (e) => {
-  list_recharge(".con_titles_en_lecture", "C_con_titles_en_lecture");
-  document.querySelector('.btn_suivante').style.display = 'none';
-  document.querySelector('.btn_suivante_vert').style.display = 'block';
-
-  document.querySelector('.btn_precedente_vert').style.display = 'block';
-  document.querySelector('.btn_precedente').style.display = 'none';
-
-}
-);
-
-//* sound control
-//* sound =0 onload
-document.addEventListener("DOMContentLoaded", (e) => {
-  document.querySelector(".custom-slider-son").value = 0;
-});
-// //* sound volume control
-const volume = document.querySelector(".sound-control input");
-volume.addEventListener("change", (e) => {
-  currentAudio.volume = volume.value / 100;
-  soundIcon();
-});
-
-//* sound icon control
-function soundIcon() {
-  const soundValue = document.querySelector(".sound-control input").value;
-  if (soundValue == 0) {
-    sound_charge(".sound_off", "C_sound_show");
-    sound_remove(".sound_low", "C_sound_show");
-    sound_remove(".sound_hight", "C_sound_show");
-    sound_remove(".sound_off", "C_sound_hidden_sound_off");
-  }
-  else if ((soundValue > 0) & (soundValue <= 50)) {
-    sound_charge(".sound_off", "C_sound_hidden_sound_off");
-    sound_remove(".sound_off", "C_sound_show");
-    sound_charge(".sound_low", "C_sound_show");
-    sound_remove(".sound_hight", "C_sound_show");
-
-  }
-  else if (soundValue > 50) {
-    sound_remove(".sound_off", "C_sound_show");
-    sound_remove(".sound_low", "C_sound_show");
-    sound_charge(".sound_hight", "C_sound_show");
-    return soundValue;
-  }
-}
-
-/**
- * 
- * @param {*} time formater le time (current/duration)  
- * @returns (m:ss)
- */
-function timeFormat(time) {
-  return Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2);
-}
-
 const durationInput = document.querySelector(".player input");
 const currentTime = document.querySelector(".time_avance p");
+const currentAudio = document.getElementById("myAudio");
 
-const currentAudi = document.getElementById("myAudio");
-
-currentAudi.addEventListener("loadedmetadata", () => {
-  const endTime = document.querySelector(".time_avance p:last-child");
-  durationInput.value = currentAudi.currentTime;
-  durationInput.setAttribute("max", currentAudi.duration);
-  currentTime.innerText = `${timeFormat(currentAudi.currentTime)}`;
-  endTime.innerText = `${timeFormat(currentAudi.duration)}`;
-});
-
-currentAudi.addEventListener("timeupdate", () => {
-  durationInput.value = currentAudi.currentTime;
-  currentTime.innerText = `${timeFormat(currentAudi.currentTime)}`;
-  document.querySelector(".time_avance p:last-child").style.left = `${(currentAudi.currentTime / currentAudi.duration) * 100}%`;
-});
-
-durationInput.addEventListener("change", () => {
-  currentAudi.currentTime = durationInput.value;
-});
-
-function createTrackItem(index, name, duration) {
-  let trackItem = document.createElement('div');
-  trackItem.setAttribute("class", "playlist-track-ctn");
-  trackItem.setAttribute("id", "ptc-" + index);
-  trackItem.setAttribute("data-index", index);
-  document.querySelector(".con_titles_en_lecture").appendChild(trackItem);
-
-  let playBtnItem = document.createElement('div');
-  playBtnItem.setAttribute("class", "playlist-btn-play");
-  playBtnItem.setAttribute("id", "pbp-" + index);
-  document.querySelector("#ptc-" + index).appendChild(playBtnItem);
-
-  let btnImg = document.createElement('i');
-  btnImg.setAttribute("class", "fas fa-play");
-  btnImg.setAttribute("height", "40");
-  btnImg.setAttribute("width", "40");
-  btnImg.setAttribute("id", "p-img-" + index);
-  document.querySelector("#pbp-" + index).appendChild(btnImg);
-  // pour la'affichage des info de titre ne lecture en bas à gauche       /////// en display:non pour le moment
-  let trackInfoItem = document.createElement('div');
-  trackInfoItem.setAttribute("class", "playlist-info-track");
-  trackInfoItem.innerHTML = name
-  document.querySelector("#ptc-" + index).appendChild(trackInfoItem);
-
-  let trackDurationItem = document.createElement('div');
-  trackDurationItem.setAttribute("class", "playlist-duration");
-  trackDurationItem.innerHTML = duration
-  document.querySelector("#ptc-" + index).appendChild(trackDurationItem);
-  document.querySelector(".custom-slider-son").value = 25;
-
-}
 
 let listAudio = [
   {
@@ -224,7 +55,105 @@ for (let i = 0; i < listAudio.length; i++) {
 //soit mettre (var indexAudio = 0;)
 //soit  (indexAudio = 0;)
 indexAudio = 0;
+let playListItems = document.querySelectorAll(".playlist-track-ctn");
 
+document.querySelector('#myAudio').src = listAudio[indexAudio].file
+currentAudio.load()
+
+let interval1;
+/**
+ * Donner une classe de style à une balise (Avec Toggle 0/1)
+ * @param {*} selecteur nom de la .class/#id (attention aux . & #) de la balise cible
+ * @param {*} styl classe de style voulu 
+ */
+function list_recharge(selecteur, styl) {
+  document.querySelector(selecteur).classList.add(styl);
+};
+/**
+ * 
+ * Donner une classe de style à une balise
+ * @param {*} selecteur nom de la .class/#id (attention aux . & #) de la balise cible 
+ * @param {*} sty classe de style voulu 
+ */
+function sound_charge(selecteur, sty) {
+  document.querySelector(selecteur).classList.add(sty);
+};
+
+/**
+ * Enlever une classe de style 
+ * @param {*} selecteur nom de la .class/#id (attention aux . & #) de la balise cible 
+ * @param {*} sty classe de style voulu
+ */
+function sound_remove(selecteur, sty) {
+  document.querySelector(selecteur).classList.remove(sty);
+};
+
+
+//* sound icon control
+function soundIcon() {
+  const soundValue = document.querySelector(".sound-control input").value;
+  if (soundValue == 0) {
+    sound_charge(".sound_off", "C_sound_show");
+    sound_remove(".sound_low", "C_sound_show");
+    sound_remove(".sound_hight", "C_sound_show");
+    sound_remove(".sound_off", "C_sound_hidden_sound_off");
+  }
+  else if ((soundValue > 0) & (soundValue <= 50)) {
+    sound_charge(".sound_off", "C_sound_hidden_sound_off");
+    sound_remove(".sound_off", "C_sound_show");
+    sound_charge(".sound_low", "C_sound_show");
+    sound_remove(".sound_hight", "C_sound_show");
+
+  }
+  else if (soundValue > 50) {
+    sound_charge(".sound_off", "C_sound_hidden_sound_off");
+    sound_remove(".sound_off", "C_sound_show");
+    sound_remove(".sound_low", "C_sound_show");
+    sound_charge(".sound_hight", "C_sound_show");
+    return soundValue;
+  }
+}
+
+/**
+ * 
+ * @param {*} time formater le time (current/duration)  
+ * @returns (m:ss)
+ */
+function timeFormat(time) {
+  return Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2);
+}
+
+function createTrackItem(index, name, duration) {
+  let trackItem = document.createElement('div');
+  trackItem.setAttribute("class", "playlist-track-ctn");
+  trackItem.setAttribute("id", "ptc-" + index);
+  trackItem.setAttribute("data-index", index);
+  document.querySelector(".con_titles_en_lecture").appendChild(trackItem);
+
+  let playBtnItem = document.createElement('div');
+  playBtnItem.setAttribute("class", "playlist-btn-play");
+  playBtnItem.setAttribute("id", "pbp-" + index);
+  document.querySelector("#ptc-" + index).appendChild(playBtnItem);
+
+  let btnImg = document.createElement('i');
+  btnImg.setAttribute("class", "fas fa-play");
+  btnImg.setAttribute("height", "40");
+  btnImg.setAttribute("width", "40");
+  btnImg.setAttribute("id", "p-img-" + index);
+  document.querySelector("#pbp-" + index).appendChild(btnImg);
+  // pour la'affichage des info de titre ne lecture en bas à gauche       /////// en display:non pour le moment
+  let trackInfoItem = document.createElement('div');
+  trackInfoItem.setAttribute("class", "playlist-info-track");
+  trackInfoItem.innerHTML = name
+  document.querySelector("#ptc-" + index).appendChild(trackInfoItem);
+
+  let trackDurationItem = document.createElement('div');
+  trackDurationItem.setAttribute("class", "playlist-duration");
+  trackDurationItem.innerHTML = duration
+  document.querySelector("#ptc-" + index).appendChild(trackDurationItem);
+  document.querySelector(".custom-slider-son").value = 25;
+
+}
 
 function stratSon() {
   document.querySelector(".custom-slider-son").value = 25;
@@ -232,34 +161,16 @@ function stratSon() {
 
 }
 
-// function loadNewTrack(index) {
-//   let player = document.querySelector('#source-audio');
-//   player.src = listAudio[index].file;
-//   document.querySelector('.title').innerHTML = listAudio[index].name;
-//   currentAudio = document.getElementById("myAudio");
-//   currentAudio.load();
-//   toggleAudio();
-//   updateStylePlaylist(indexAudio, index);
-//   indexAudio = index;
-//   stratSon();
-
-// }
-
-function loadNewTrack(index){
-  var player = document.querySelector('#source-audio')
+function loadNewTrack(index) {
+  let player = document.querySelector('#myAudio')
   player.src = listAudio[index].file
-  document.querySelector('.title').innerHTML = listAudio[index].name
   this.currentAudio = document.getElementById("myAudio");
   this.currentAudio.load()
   this.toggleAudio()
-  this.updateStylePlaylist(this.indexAudio,index)
+  this.updateStylePlaylist(this.indexAudio, index)
   this.indexAudio = index;
   stratSon();
-
 }
-
-
-let playListItems = document.querySelectorAll(".playlist-track-ctn");
 
 for (let i = 0; i < playListItems.length; i++) {
   playListItems[i].addEventListener("click", getClickedElement.bind());
@@ -279,13 +190,6 @@ function getClickedElement(event) {
 }
 
 
-document.querySelector('#source-audio').src = listAudio[indexAudio].file
-document.querySelector('.title').innerHTML = listAudio[indexAudio].name
-
-let currentAudio = document.getElementById("myAudio");
-currentAudio.load()
-
-let interval1;
 
 function toggleAudio() {
   document.querySelector(".custom-slider-son").value = 25;
@@ -332,7 +236,7 @@ function previous() {
   if (indexAudio > 0) {
     let oldIndex = indexAudio
     indexAudio--;
-    updateStylePlaylist(oldIndex, indexAudio)
+    updateStylePlaylist(oldIndex, indexAudio);
     loadNewTrack(indexAudio);
   }
 }
@@ -364,24 +268,26 @@ function toggleMute() {
   let volhight = document.querySelector('.sound_hight');
   if (currentAudio.muted == false) {
     currentAudio.muted = true;
-    vollow.style.display = "none";
-    volhight.style.display = "none";
-    voloff.style.display = "block";
+    sound_charge(".sound_off", "C_sound_show");
+    sound_remove(".sound_low", "C_sound_show");
+    sound_remove(".sound_hight", "C_sound_show");
+    sound_remove(".sound_off", "C_sound_hidden_sound_off");
 
-  } else if (currentAudio.muted = true && (soundValue > 0 && soundValue <= 50)) {
+  } else if (currentAudio.muted = true && (soundValue > 0 & soundValue <= 50)) {
     currentAudio.muted = false;
-    voloff.style.display = "none";
-    vollow.style.display = "block";
-    volhight.style.display = "none";
+    sound_charge(".sound_off", "C_sound_hidden_sound_off");
+    sound_remove(".sound_off", "C_sound_show");
+    sound_charge(".sound_low", "C_sound_show");
+    sound_remove(".sound_hight", "C_sound_show");
   }
-  else if (currentAudio.muted = true && (soundValue > 50 && soundValue < 101)) {
+  else if (currentAudio.muted = true && (soundValue > 50 & soundValue < 101)) {
     currentAudio.muted = false;
-    voloff.style.display = "none";
-    vollow.style.display = "none";
-    volhight.style.display = "block";
+    sound_charge(".sound_off", "C_sound_hidden_sound_off");
+    sound_remove(".sound_off", "C_sound_show");
+    sound_remove(".sound_low", "C_sound_show");
+    sound_charge(".sound_hight", "C_sound_show");
   }
 }
-
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -390,26 +296,98 @@ function getRandomInt(max) {
 let countRandom = 0;
 function randomSong() {
   countRandom++;
-  let randomNombre = getRandomInt(listAudio.length)
+  let randomNombre = getRandomInt(listAudio.length);
+  let oldIndex = indexAudio;
   indexAudio = randomNombre;
-  loadNewTrack(indexAudio);
-  console.log("indexAudio" + indexAudio);
-
+  updateStylePlaylist(oldIndex, indexAudio);
   loadNewTrack(indexAudio);
 }
 
 let countreplay = 0;
-
 function replay() {
   countreplay++,
     indexAudio++;
   indexAudio--;
-  console.log(indexAudio);
   loadNewTrack(indexAudio);
-  loadNewTrack(indexAudio);
-
 }
 
+//* sound control
+//* sound =0 onload
+document.addEventListener("DOMContentLoaded", (e) => {
+  document.querySelector(".custom-slider-son").value = 0;
+});
+// //* sound volume control
+const volume = document.querySelector(".sound-control input");
+volume.addEventListener("change", (e) => {
+  currentAudio.volume = volume.value / 100;
+  soundIcon();
+});
+
+let replaySong = document.querySelector(".first-btn");
+replaySong.addEventListener("click", (e) => {
+  replay();
+});
+
+let precedentSong = document.querySelector(".second-btn");
+precedentSong.addEventListener("click", (e) => {
+  previous();
+});
+
+let reculSong = document.querySelector(".third-btn");
+reculSong.addEventListener("click", (e) => {
+  rewind();
+});
+
+let playSong = document.querySelector(".fourth-btn");
+playSong.addEventListener("click", (e) => {
+  toggleAudio();
+});
+
+let avanceSong = document.querySelector(".fith-btn");
+avanceSong.addEventListener("click", (e) => {
+  forward();
+});
+let nextSong = document.querySelector(".sixth-btn");
+nextSong.addEventListener("click", (e) => {
+  next();
+});
+
+let randSong = document.querySelector(".seventh-btn");
+randSong.addEventListener("click", (e) => {
+  randomSong();
+});
+let soundOff = document.querySelector(".sound_off");
+soundOff.addEventListener("click", (e) => {
+  toggleMute();
+});
+
+let soundLow = document.querySelector(".sound_low");
+soundLow.addEventListener("click", (e) => {
+  toggleMute();
+});
+
+let soundHieght = document.querySelector(".sound_hight");
+soundHieght.addEventListener("click", (e) => {
+  toggleMute();
+});
+
+currentAudio.addEventListener("loadedmetadata", () => {
+  const endTime = document.querySelector(".time_avance p:last-child");
+  durationInput.value = currentAudio.currentTime;
+  durationInput.setAttribute("max", currentAudio.duration);
+  currentTime.innerText = `${timeFormat(currentAudio.currentTime)}`;
+  endTime.innerText = `${timeFormat(currentAudio.duration)}`;
+});
+
+currentAudio.addEventListener("timeupdate", () => {
+  durationInput.value = currentAudio.currentTime;
+  currentTime.innerText = `${timeFormat(currentAudio.currentTime)}`;
+  document.querySelector(".time_avance p:last-child").style.left = `${(currentAudio.currentTime / currentAudio.duration) * 100}%`;
+});
+
+durationInput.addEventListener("change", () => {
+  currentAudio.currentTime = durationInput.value;
+});
 
 let next_album = document.querySelector(".btn_vert_Stromae_after");
 next_album.addEventListener("click", (e) => {
@@ -417,7 +395,6 @@ next_album.addEventListener("click", (e) => {
   cadre_stromae.style.backgroundImage = "url(./assets/img/Soprano.jpg)";
   document.querySelector(".multitude").innerHTML = "Soprano _ Chasseur d'Étoiles";
   document.querySelector(".multitude").style = "font-size : 0.9em";
-
 });
 
 let befor_album = document.querySelector(".btn_vert_Stromae_befor");
@@ -425,62 +402,92 @@ befor_album.addEventListener("click", (e) => {
   let cadre_stromae = document.querySelector(".cadre_stromae")
   cadre_stromae.style.backgroundImage = "url(./assets/img/Wejdene.jpg)";
   document.querySelector(".multitude").innerHTML = "Wejdene _ Glow Up";
-
 });
 
-let playe_album = document.querySelector(".btn_vert_Stromae_playe");
+let playe_album = document.querySelector(".buy");
 playe_album.addEventListener("click", (e) => {
-  list_recharge(".chariot_grand", "C_chariot_grand");
-  list_recharge(".chariot", "C_chariot");
+  confirm("Please, click on [OK] to go to purchase page !" + "\r" + "\r" +
+    "Or [Annuler] to stay on this page.", { okLabel: "oui" });
+  if (confirm == true) {
+    console.log("J'attend php, pour pouvoir envoyer l'utilisateur vers la page de paiement");
+    // window.open("open.html");
+  } else if (confirm == false) {
+    console.log("à bientô");
+
+  }
 });
 
 let reset = document.querySelector(".reset_playe_audio");
-let countReset = 0;
 
 reset.addEventListener("click", (e) => {
-  countReset++;
-  soundIcon();
-  document.querySelector(".custom-slider-son").value = 0;
-  document.querySelector('.btn_suivante').style.display = 'block';
-  document.querySelector('.btn_suivante_vert').style.display = 'none';
+  // let oldIndex = indexAudio;
+  // indexAudio = 0;
+  // updateStylePlaylist(oldIndex, indexAudio);
+  // loadNewTrack(indexAudio);
+  // toggleAudio(indexAudio);
+  // document.querySelector(".custom-slider-son").value = 0;
+  // soundIcon();
+  location.reload();
+}
 
-  document.querySelector('.btn_precedente').style.display = 'block';
-  document.querySelector('.btn_precedente_vert').style.display = 'none';
-  let message = document.querySelector(".con_titles_en_lecture").innerHTML = "Please, Click here to refresh the page and re-create your Playlist, <br> <br> See You Soon ! ! ";
-  message.style = "text-color:black";
-  let vider = document.querySelector(".con_titles_en_lecture");
-  vider.style = 'background-color:#D2C5F9; padding-top:100px; padding-left:25px; padding-right:25px';
-  replay();
-});
-
-
-let reload = document.querySelector(".con_titles_en_lecture");
-reload.addEventListener("click", (e) => {
-  if (countReset == 1) {
-    countReset--;
-    location.reload();
-  }
-})
+);
 
 currentAudio.addEventListener("ended", (e) => {
   if (countRandom == 1) {
     countRandom--;
-    console.log("countRandom" + countRandom);
     randomSong();
-    console.log("countRandom" + countRandom);
   } else if (countreplay == 1) {
     countreplay--,
-      console.log("countreplay" + countreplay);
-    replay();
-    console.log("countreplay" + countreplay);
+      replay();
   }
-  else if (indexAudio == listAudio.length-1) {
+  else if (indexAudio == listAudio.length - 1) {
     indexAudio = 0;
-   console.log(indexAudio);
-   loadNewTrack(indexAudio);
+    loadNewTrack(indexAudio);
   }
   else {
     next();
   }
 }
 )
+
+let img1 = document.querySelector(".img-title1");
+img1.addEventListener("click", (e) => {
+  list_recharge(".my_main", "C_main_1");
+  sound_remove(".my_main", "C_main_2");
+  sound_remove(".my_main", "C_main_3");
+  sound_remove(".my_main", "C_main_4");
+  sound_remove(".my_main", "C_main_5");
+});
+let img2 = document.querySelector(".img-title2");
+img2.addEventListener("click", (e) => {
+  sound_remove(".my_main", "C_main_1");
+  list_recharge(".my_main", "C_main_2");
+  sound_remove(".my_main", "C_main_3");
+  sound_remove(".my_main", "C_main_4");
+  sound_remove(".my_main", "C_main_5");
+});
+let img3 = document.querySelector(".img-title3");
+img3.addEventListener("click", (e) => {
+  sound_remove(".my_main", "C_main_1");
+  sound_remove(".my_main", "C_main_2");
+  list_recharge(".my_main", "C_main_3");
+  sound_remove(".my_main", "C_main_4");
+  sound_remove(".my_main", "C_main_5");
+});
+let img4 = document.querySelector(".img-title4");
+img4.addEventListener("click", (e) => {
+  sound_remove(".my_main", "C_main_1");
+  sound_remove(".my_main", "C_main_2");
+  sound_remove(".my_main", "C_main_3");
+  list_recharge(".my_main", "C_main_4");
+  sound_remove(".my_main", "C_main_5");
+});
+let img5 = document.querySelector(".img-title5");
+img5.addEventListener("click", (e) => {
+  sound_remove(".my_main", "C_main_1");
+  sound_remove(".my_main", "C_main_2");
+  sound_remove(".my_main", "C_main_3");
+  sound_remove(".my_main", "C_main_4");
+  list_recharge(".my_main", "C_main_5");
+});
+
