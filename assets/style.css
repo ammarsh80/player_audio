@@ -1,5 +1,6 @@
 @import url("https://fonts.cdnfonts.com/css/courgette");
 @import url("https://fonts.cdnfonts.com/css/inter");
+
 /* import */
 * {
     margin: 0;
@@ -177,24 +178,28 @@ main {
     background-image: url(../assets/img/Capture1.PNG);
     background-size: cover;
 }
-.C_main_1{
+
+.C_main_1 {
     background-image: url(../assets/img/Capture1.PNG);
     background-size: cover;
 }
 
-.C_main_2{
+.C_main_2 {
     background-image: url(../assets/img/Capture2.PNG);
     background-size: cover;
 }
-.C_main_3{
+
+.C_main_3 {
     background-image: url(../assets/img/Capture3.PNG);
     background-size: cover;
 }
-.C_main_4{
+
+.C_main_4 {
     background-image: url(../assets/img/Capture4.PNG);
     background-size: cover;
 }
-.C_main_5{
+
+.C_main_5 {
     background-image: url(../assets/img/Capture5.PNG);
     background-size: cover;
 }
@@ -238,6 +243,7 @@ p {
     padding-left: 15px;
     gap: 40px;
 }
+
 .cont_my_playlist,
 .cont_my_album {
     text-align: center;
@@ -269,12 +275,13 @@ p {
     padding: 8.5px 0px;
 }
 
-.con_img_title img{
+.con_img_title img {
     margin-bottom: 7.5px;
     width: 37px;
     height: 37px;
     border-radius: 5px;
 }
+
 .con_titles_en_lecture {
     display: flex;
     background-color: var(--vert);
@@ -290,6 +297,10 @@ p {
     scrollbar-width: none;
 }
 
+.con_titles_en_lecture:hover {
+    scrollbar-width: thin;
+}
+
 .con_titles_en_lecture {
     width: 270px;
     height: 233px;
@@ -302,10 +313,11 @@ p {
     margin-left: 10px;
     display: block;
     font-family: inter, Arial, Helvetica, sans-serif;
-    margin-left: 30px;}
+    margin-left: 30px;
+}
 
 .C_con_titles_en_lecture {
-   display: none;
+    display: none;
 }
 
 .container_album {
@@ -436,11 +448,13 @@ p {
     width: 30px;
     height: 30px;
 }
-.btn_avance{
+
+.btn_avance {
     cursor: pointer;
 
     margin-top: 3px;
 }
+
 .btn_aleatoire {
     cursor: pointer;
     width: 25px;
@@ -641,19 +655,24 @@ p {
 
 /* partie commune */
 input[type=range].custom-slider {
-    padding: 0;                   /* nécessaire pour IE */
-    font: inherit;                /* même rendu suivant font document */
+    padding: 0;
+    /* nécessaire pour IE */
+    font: inherit;
+    /* même rendu suivant font document */
     outline: none;
-    color: rgb(29, 26, 26);                  /* sert pour couleur de référence, via currentColor, pour le curseur */
+    color: rgb(29, 26, 26);
+    /* sert pour couleur de référence, via currentColor, pour le curseur */
     opacity: 0.8%;
-    background: red;             /* sert pour couleur de fond de la zone de déplacement */
-    box-sizing: border-box;       /* même modèle de boîte pour tous */
+    background: red;
+    /* sert pour couleur de fond de la zone de déplacement */
+    box-sizing: border-box;
+    /* même modèle de boîte pour tous */
     transition: opacity .2s;
     cursor: pointer;
-  }
+}
 
 /* Pour Chrome */
-  /* la zone de déplacement */
+/* la zone de déplacement */
 input[type=range].custom-slider-avance::-webkit-slider-runnable-track {
 
     height: 15px;
@@ -661,22 +680,23 @@ input[type=range].custom-slider-avance::-webkit-slider-runnable-track {
     border-radius: 3px;
     background-color: var(--white);
 
-  }
-  /* le curseur */
-  input[type=range].custom-slider-avance::-webkit-slider-thumb {
-     width: 13px;
+}
+
+/* le curseur */
+input[type=range].custom-slider-avance::-webkit-slider-thumb {
+    width: 13px;
     height: 13px;
     border: none;
     /* s'adapte à la hauteur de l'input */
     border-radius: 50%;
     /* supprimer le rayon */
     background: var(--vert);
-  }
+}
 
 /* Pour mon audio player *********************************************************************************/
 /* Progression de la musique */
 /* la zone de déplacement */
-input[type=range].custom-slider-avance::-moz-range-track{
+input[type=range].custom-slider-avance::-moz-range-track {
     height: 5px;
     border: none;
     border-radius: 3px;
@@ -810,3 +830,33 @@ p:hover {
 }
 
 /*  *************************************************/
+@media (max-width: 744px) {
+    main {
+        background-image: none;
+        background-color: white;
+    }
+
+    * {
+        transform: scale(0.96, 0.975);
+    }
+
+    img {
+        transform: scale(1.1, 1.1);
+    }
+}
+
+@media (max-width: 600px) {
+
+    * {
+        transform: scale(0.92, 0.875);
+    }
+
+    .container_1 {
+        transform: rotate(90deg);
+    }
+
+    div,
+    p {
+        font-size: 1.05em;
+    }
+}
